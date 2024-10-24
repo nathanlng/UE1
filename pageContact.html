@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <header>ceci est mon header</header>
+
+    <nav class="navbar">
+      <a id="siteName" href="index.html">Kootlinf</a>
+      <div class="lien">
+        <ul>
+          <li><a href="pageAcceuil.html">Home</a></li>
+          <li><a href="pageLink.html">Link</a></li>
+          <li><a href="pageContact.html">Contact</a></li>
+          <li><a href="pageProfil.html">Profile</a></li>
+        </ul>
+      </div>
+    </nav>
+    <h2>mon formulaire de contact</h2>
+
+    <form action="" method="">
+      <div class="formulaire">
+        <table class="tabFormulaire" width="500" border="0" cellspacing="2" cellpadding="5">
+          <caption></caption>
+          <tr>
+            <td>Votre prénom</td>
+            <td>
+              <input type="text" name="unPrenom" placeholder="toto" required />
+            </td>
+          </tr>
+          <tr>
+            <td>Votre nom</td>
+            <td>
+              <input type="text" name="unNom" placeholder="tutu" required />
+            </td>
+          </tr>
+          <tr>
+            <td>votre pays</td>
+            <td>
+              <select required name="monPays" id="">
+                <option value="0">--choisissez--</option>
+                <option value="1" selected>France</option>
+                <option value="2">autre</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Votre ville</td>
+            <td>
+              <input
+                type="text"
+                name="uneVille"
+                required
+                placeholder="Tombouctou"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Votre mail</td>
+            <td>
+              <input
+                type="text"
+                name="unMail"
+                required
+                placeholder="toto.tutu@mail.com"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Votre commentaire</td>
+            <td>
+              <textarea
+                name="unCommentaire"
+                id=""
+                placeholder="Mon avis ..."
+              ></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>Votre note</td>
+            <td>
+              <input
+                type="range"
+                name="Range"
+                value=""
+                min="0"
+                max="5"
+                step="0.5"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Fichiers additionnels</td>
+            <td><input type="file" multiple /></td>
+          </tr>
+          
+        </table>
+      </div>
+      <input type="checkbox" name="condition" id="" required />
+      <label for="condition">
+        accepter les
+        <a
+          href="#"
+          target="_blank"
+          class="conditionPartage"
+          >condition d'utilisation et de partage</a>
+      </label>
+      <br />
+      <br />
+      <button type="submit">envoyer</button>
+      <br />
+      <br />
+      <button type="reset">réinitialiser</button>
+    </form>
+    <footer>ceci est mon footer</footer>
+</body>
+</html>

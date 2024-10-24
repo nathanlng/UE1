@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <header></header>
+    <nav class="navbar">
+      <a id="siteName" href="index.html">Kootlinf</a>
+      <div class="lien">
+        <ul>
+          <li><a href="pageAcceuil.html">Home</a></li>
+          <li ><a href="pageLink.html" onclick=clickLink()>Link</a></li>
+          <li><a href="pageContact.html">Contact</a></li>
+          <li><a href="pageProfil.html">Profile</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="profile"></div>
+    <button id="editButton">edit profile</button>
+    <div id="editProfile">
+      <table
+        class="tabFormulaire"
+        width="500"
+        border="0"
+        cellspacing="2"
+        cellpadding="5"
+      >
+        <tr>
+          <td>nom</td>
+          <td><input id="profileNom" type="text" placeholder="nom" /></td>
+        </tr>
+        <tr>
+          <td>prenom</td>
+          <td>
+            <input id="profilePrenom" type="text" placeholder="prenom" />
+          </td>
+        </tr>
+        <tr>
+          <td>age</td>
+          <td>
+            <input
+              type="number"
+              id="playerAge"
+              min="14"
+              max="50"
+              placeholder="18"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>catégorie</td>
+          <td>
+            <select name="sexe" id="sexePlayer" required>
+              <option value="">--choisissez--</option>
+              <option value="H">masculin</option>
+              <option value="F">féminine</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>niveau</td>
+          <td>
+            <select name="niveau" id="niveauPlayer" required>
+              <option value="">--choisissez--</option>
+              <option value="Autre">Autre</option>
+              <option value="L1">Ligue 1</option>
+              <option value="L2">Ligue 2</option>
+              <option value="N1">National 1</option>
+              <option value="N2">National 2</option>
+              <option value="N3">National 3</option>
+              <option value="R1">Regional 1</option>
+              <option value="R2">Regional 2</option>
+              <option value="R3">Regional 3</option>
+              <option value="R4">Regional 4</option>
+              <option value="D1">Departemental 1</option>
+              <option value="D2">Departemental 2</option>
+              <option value="D3">Departemental 3</option>
+              <option value="D4">Departemental 4</option>
+              <option value="D5">Departemental 5</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>club</td>
+          <td>
+            <input type="text" id="playerClub" placeholder="fc sochaux" />
+          </td>
+        </tr>
+        <tr>
+          <td>type de foot</td>
+          <td>
+            <select name="footCategorie" id="footCategoriePlayer" required>
+              <option value="">--choisissez--</option>
+              <option value="F11">foot à 11</option>
+              <option value="F5">foot à 5</option>
+              <option value="F6">foot à 6</option>
+              <option value="Futsal">futsal</option>
+              <option value="Foot-handi">foot-handi</option>
+              <option value="beach">beach soccer</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>poste</td>
+          <td>
+            <select name="poste" id="postePlayer">
+              <option value="">--choisissez--</option>
+              <option value="GK">GK</option>
+              <option value="CB">CB</option>
+              <option value="DD">DD</option>
+              <option value="DG">DG</option>
+              <option value="MDC">MDC</option>
+              <option value="MC">MC</option>
+              <option value="MOC">MOC</option>
+              <option value="MD">MD</option>
+              <option value="MG">MG</option>
+              <option value="AD">AD</option>
+              <option value="AG">AG</option>
+              <option value="BU">BU</option>
+              <option value="Milieu">Milieu de terrain</option>
+              <option value="Latéral">Latéral</option>
+              <option value="Défenseur">Défenseur</option>
+              <option value="Ailier">Ailier</option>
+              <option value="Attaquant">Attaquant</option>
+              <option value="Piston">Piston</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>pied fort</td>
+          <td>
+            <select name="piedFort" id="piedFortPlayer">
+              <option value="">--choisissez--</option>
+              <option value="D">Droit</option>
+              <option value="G">Gauche</option>
+              <option value="Ambidextre">Ambidextre</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      <p>ma biographie</p>
+      <input id="descriptionButton" type="text" placeholder="ma biographie" />
+      <br />
+      <button id="submitButton">ok</button>
+    </div>
+  </body>
+</html>
