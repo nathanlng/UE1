@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact</title>
     <link rel="stylesheet" href="style.css" />
     <script src="index.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>ceci est mon header</header>
 
     <nav class="navbar">
@@ -20,29 +20,34 @@
           <li><a href="pageProfil.html">Profile</a></li>
         </ul>
       </div>
+      <button class="menuBurger">lll</button>
     </nav>
     <h2>mon formulaire de contact</h2>
 
     <form action="" method="">
       <div class="formulaire">
-        <table class="tabFormulaire" width="500" border="0" cellspacing="2" cellpadding="5">
-          <caption></caption>
+        <table
+          class="tabFormulaire"
+          width="500"
+          cellspacing="2"
+          cellpadding="5"
+        >
           <tr>
             <td>Votre prénom</td>
             <td>
-              <input type="text" name="unPrenom" placeholder="toto" required />
+              <input type="text" name="unPrenom" placeholder="toto" required class="inputForm" />
             </td>
           </tr>
           <tr>
             <td>Votre nom</td>
             <td>
-              <input type="text" name="unNom" placeholder="tutu" required />
+              <input type="text" name="unNom" placeholder="tutu" required class="inputForm"/>
             </td>
           </tr>
           <tr>
             <td>votre pays</td>
             <td>
-              <select required name="monPays" id="">
+              <select required name="monPays" class="inputForm">
                 <option value="0">--choisissez--</option>
                 <option value="1" selected>France</option>
                 <option value="2">autre</option>
@@ -56,7 +61,7 @@
                 type="text"
                 name="uneVille"
                 required
-                placeholder="Tombouctou"
+                placeholder="Tombouctou" class="inputForm"
               />
             </td>
           </tr>
@@ -67,7 +72,7 @@
                 type="text"
                 name="unMail"
                 required
-                placeholder="toto.tutu@mail.com"
+                placeholder="toto.tutu@mail.com" class="inputForm"
               />
             </td>
           </tr>
@@ -78,6 +83,7 @@
                 name="unCommentaire"
                 id=""
                 placeholder="Mon avis ..."
+                class="inputForm"
               ></textarea>
             </td>
           </tr>
@@ -90,7 +96,7 @@
                 value=""
                 min="0"
                 max="5"
-                step="0.5"
+                step="0.5" class="inputForm" 
               />
             </td>
           </tr>
@@ -98,25 +104,21 @@
             <td>Fichiers additionnels</td>
             <td><input type="file" multiple /></td>
           </tr>
-          
         </table>
+        <div id="conditionPar">
+        <input type="checkbox" name="condition"  required />
+          <label for="condition">
+            accepter les
+            <a href="#" target="_blank" class="conditionPartage"
+              >condition d'utilisation et de partage</a
+            >
+          </label>
+        </div>
+        <button type="submit" class="buttonStyle">envoyer</button>
+        <button type="reset" class="buttonStyle">réinitialiser</button>
+      </form>
       </div>
-      <input type="checkbox" name="condition" id="" required />
-      <label for="condition">
-        accepter les
-        <a
-          href="#"
-          target="_blank"
-          class="conditionPartage"
-          >condition d'utilisation et de partage</a>
-      </label>
-      <br />
-      <br />
-      <button type="submit">envoyer</button>
-      <br />
-      <br />
-      <button type="reset">réinitialiser</button>
-    </form>
+
     <footer>ceci est mon footer</footer>
-</body>
+  </body>
 </html>
