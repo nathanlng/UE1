@@ -1,9 +1,11 @@
+const playersList = document.getElementById("container");
+
 const newPlayerList = (element) => {
     const newPlayerProfile = document.createElement("div");
     newPlayerProfile.setAttribute("class", "player");
   
     const newPlayerImage = document.createElement("img");
-    newPlayerImage.setAttribute("src", "photoplayer.avif");
+    newPlayerImage.setAttribute("src", element.attributs.photo);
     newPlayerImage.setAttribute("class", "imagePlayer");
   
     const newPlayerTitle = document.createElement("p");
@@ -38,7 +40,7 @@ const newPlayerList = (element) => {
   if (localStorage.getItem("caract") == null) {
     localStorage.setItem("caract", JSON.stringify(initialPlayer));
   } else {
-    initialPlayer = JSON.parse(localStorage.getItem("caract"));
+    let initialPlayer = JSON.parse(localStorage.getItem("caract"));
     initialPlayer.forEach((element) => {
       newPlayerList(element);
     });

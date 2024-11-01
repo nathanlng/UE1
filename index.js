@@ -7,6 +7,9 @@ let playerClub = document.getElementById("playerClub");
 let footCategoriePlayer = document.getElementById("footCategoriePlayer");
 let postePlayer = document.getElementById("postePlayer");
 let piedFortPlayer = document.getElementById("piedFortPlayer");
+let description = document.getElementById("descriptionButton")
+let imagePlayer= document.getElementById("imagePlayer")
+
 
 console.log(localStorage);
 // localStorage.clear()
@@ -16,26 +19,22 @@ let initialPlayer = [];
 let newId = initialPlayer.length + 1;
 const addPlayer = document.getElementById("addPlayer");
 
-const playersList = document.getElementById("container");
+
 
 if (localStorage.getItem("caract") == null) {
-  localStorage.setItem("caract", JSON.stringify(initialPlayer));
+  // localStorage.setItem("caract", JSON.stringify(initialPlayer));
+  console.log(localStorage);
+  
 } else {
   initialPlayer = JSON.parse(localStorage.getItem("caract"));
 }
 
 let attributsPlayer = " ";
 
-// function maFonction() {
-//   let tabPlayer = JSON.parse(localStorage.getItem("caract"));
-
-//   newPlayerList(tabPlayer[tabPlayer.length-1]);
-
-// }
-
 const submitButton = document.getElementById("submitButton");
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click",() => {
+
   const newPlayer = {
     id: newId,
     attributs: {
@@ -48,9 +47,10 @@ submitButton.addEventListener("click", () => {
       typeFoot: footCategoriePlayer.value,
       poste: postePlayer.value,
       piedFort: piedFortPlayer.value,
+      biographie: description.value,
+      photo: imagePlayer.value,
     },
   };
-  console.log(newPlayer);
 
   initialPlayer.push(newPlayer);
   console.log(initialPlayer);
@@ -59,9 +59,31 @@ submitButton.addEventListener("click", () => {
 
   localStorage.setItem("caract", JSON.stringify(initialPlayer));
   console.log(localStorage);
-  // console.log(initialPlayer);
+
+
+  document.getElementById("profile").style.display = "flex";
+  document.getElementById("editProfile").style.display = "none";
 });
 
-document.getElementsByClassName("menuBurger").addEventListener("click", () => {
-  
+
+
+document.getElementById("editButton").addEventListener("click", () => {
+  document.getElementById("profile").style.display = "none";
+  document.getElementById("editProfile").style.display = "flex";
 });
+
+
+
+// document.getElementsByClassName("navabar").getElementsByClassName("menuBurger").addEventListener("click", () => {
+//   document.getElementsByClassName("lien").style.display="flex"
+// });
+
+// document.getElementsByClassName("lien").addEventListener("click", () => {
+//   document.getElementsByClassName("lien").style.display="none"
+// });
+
+
+document.getElementById("delete").addEventListener("click" , ()=>{
+// localStorage.clear()
+console.log(fesdg);
+})

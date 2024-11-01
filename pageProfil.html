@@ -6,6 +6,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="style.css" />
     <script src="index.js" defer></script>
+    <script src="profile.js" defer></script>
   </head>
   <body>
     <header></header>
@@ -19,15 +20,64 @@
           <li><a href="pageProfil.html">Profile</a></li>
         </ul>
       </div>
-      <button class="menuBurger">lll</button>
+      <svg
+        class="menuBurger"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"
+      >
+        <path
+          d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"
+        />
+      </svg>
     </nav>
-    <div id="profile"></div>
-    <button id="editButton" class="buttonStyle">edit profile</button>
+    <div id="profile">
+      <div id="profileContainer">
+        <div id="photoContainer"></div>
+        <div id="username"><p id="userN">nom</p></div>
+        <div id="sousPartProfil">
+          <table cellspacing="2" cellpadding="5" width="40%">
+            <tr>
+              <td>age:</td>
+              <td id="age"></td>
+            </tr>
+            <tr>
+              <td>categorie:</td>
+              <td id="sexe"></td>
+            </tr>
+            <tr>
+              <td>divison:</td>
+              <td id="niveau"></td>
+            </tr>
+            <tr>
+              <td>club:</td>
+              <td id="pClub"></td>
+            </tr>
+            <tr>
+              <td>foot:</td>
+              <td id="typeF"></td>
+            </tr>
+            <tr>
+              <td>poste:</td>
+              <td id="poste"></td>
+            </tr>
+            <tr>
+              <td>pied fort:</td>
+              <td id="piedF"></td>
+            </tr>
+          </table>
+          <div id="bio"></div>
+        </div>
+      </div>
+      <div id="testId"></div>
+      <div id="testImg"></div>
+      <button id="editButton" class="buttonStyle">edit profile</button>
+    </div>
+
     <div id="editProfile">
-      <form action="" method="">
+      <form action="" method="get">
         <table
           class="tabFormulaire"
-          width="500"
+          width="500px"
           border="0"
           cellspacing="2"
           cellpadding="5"
@@ -62,11 +112,12 @@
                 id="playerAge"
                 min="14"
                 max="50"
-                placeholder="18"
                 class="inputForm"
+                value="18"
               />
             </td>
           </tr>
+
           <tr>
             <td>catégorie</td>
             <td>
@@ -117,25 +168,6 @@
             </td>
           </tr>
           <tr>
-            <td>type de foot</td>
-            <td>
-              <select
-                name="footCategorie"
-                id="footCategoriePlayer"
-                required
-                class="inputForm"
-              >
-                <option value="">--choisissez--</option>
-                <option value="F11">foot à 11</option>
-                <option value="F5">foot à 5</option>
-                <option value="F6">foot à 6</option>
-                <option value="Futsal">futsal</option>
-                <option value="Foot-handi">foot-handi</option>
-                <option value="beach">beach soccer</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
             <td>poste</td>
             <td>
               <select name="poste" id="postePlayer" class="inputForm">
@@ -172,16 +204,42 @@
               </select>
             </td>
           </tr>
+          <tr>
+            <td>type de foot</td>
+            <td>
+              <select
+                name="footCategorie"
+                id="footCategoriePlayer"
+                required
+                class="inputForm"
+              >
+                <option value="">--choisissez--</option>
+                <option value="F11">foot à 11</option>
+                <option value="F5">foot à 5</option>
+                <option value="F6">foot à 6</option>
+                <option value="Futsal">futsal</option>
+                <option value="Foot-handi">foot-handi</option>
+                <option value="beach">beach soccer</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>photo</td>
+            <td><input id="imagePlayer" type="file" accept="image/png, image/avif, image/jpeg"></td>
+          </tr>
+          <tr>
+            <td><p>ma biographie</p></td>
+            <td>
+              <input
+                id="descriptionButton"
+                type="text"
+                placeholder="ma biographie"
+                class="inputForm"
+              />
+            </td>
+          </tr>
         </table>
-        <div>
-          <p>ma biographie</p>
-          <input
-            id="descriptionButton"
-            type="text"
-            placeholder="ma biographie"
-            class="bio"
-          />
-          <br />
+        <div id="partProfil">
           <button id="submitButton" class="buttonStyle">ok</button>
         </div>
       </form>
