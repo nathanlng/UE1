@@ -9,33 +9,36 @@
     <script src="affichage.js" defer></script>
   </head>
   <body>
-    <header></header>
+    <header>
+      <img src="images/logoUE1.png" alt="" id="logo" />
+      <div id="siteName">Kootlinf</div>
+    </header>
 
     <nav class="navbar">
-      <a id="siteName" href="index.html">Kootlinf</a>
-      <div class="lien">
+      <div id="sideNav" class="lien">
         <ul>
-          <li><a href="pageAcceuil.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="pageLink.html">Link</a></li>
           <li><a href="pageContact.html">Contact</a></li>
           <li><a href="pageProfil.html">Profile</a></li>
         </ul>
       </div>
-      <svg class="menuBurger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
-
+      <a href="#" id="openBtn" onclick="openNav()">
+        <span class="menuBurger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </a>
     </nav>
-    <!-- <div class="menu">
-      <ul>
-        <li><a href="pageAcceuil.html">Home</a></li>
-        <li><a href="pageLink.html">Link</a></li>
-        <li><a href="pageContact.html">Contact</a></li>
-        <li><a href="pageProfil.html">Profile</a></li>
-      </ul>
-    </div> -->
     <div id="containerStyle">
-    <div id="container"></div>
-  </div>
-    <a href="pageProfil.html" id="linkAdd"><button id="addPlayer" class="buttonStyle">✚</button></a>
-    <button id="delete">delete</button>
+      <div id="container"></div>
+    </div>
+    <a href="pageProfil.html" id="linkAdd"
+      ><button id="addPlayer" class="buttonStyle">✚</button></a
+    >
+    <footer>
+      <a href="mentionsLegales.html" target="_blank">Mentions légales</a>
+    </footer>
   </body>
 </html>

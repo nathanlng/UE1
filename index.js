@@ -1,15 +1,17 @@
 let playerName = document.getElementById("profileNom");
 let playerPrenom = document.getElementById("profilePrenom");
 let playerAge = document.getElementById("playerAge");
-let sexePlayer = document.getElementById("sexePlayer");
+let playerSexe = document.getElementById("sexePlayer");
 let niveauPlayer = document.getElementById("niveauPlayer");
 let playerClub = document.getElementById("playerClub");
 let footCategoriePlayer = document.getElementById("footCategoriePlayer");
 let postePlayer = document.getElementById("postePlayer");
 let piedFortPlayer = document.getElementById("piedFortPlayer");
-let description = document.getElementById("descriptionButton")
-let imagePlayer= document.getElementById("imagePlayer")
+let description = document.getElementById("descriptionButton");
+let imagePlayer = document.getElementById("imagePlayer");
 
+var sidenav = document.getElementById("sideNav");
+sidenav.classList.remove("active");
 
 console.log(localStorage);
 // localStorage.clear()
@@ -19,12 +21,8 @@ let initialPlayer = [];
 let newId = initialPlayer.length + 1;
 const addPlayer = document.getElementById("addPlayer");
 
-
-
 if (localStorage.getItem("caract") == null) {
-  // localStorage.setItem("caract", JSON.stringify(initialPlayer));
-  console.log(localStorage);
-  
+  localStorage.setItem("caract", JSON.stringify(initialPlayer));
 } else {
   initialPlayer = JSON.parse(localStorage.getItem("caract"));
 }
@@ -33,15 +31,16 @@ let attributsPlayer = " ";
 
 const submitButton = document.getElementById("submitButton");
 
-submitButton.addEventListener("click",() => {
+// création d'un nouveau player
 
+submitButton.addEventListener("click", () => {
   const newPlayer = {
     id: newId,
     attributs: {
       nom: playerName.value,
       prenom: playerPrenom.value,
       age: parseInt(playerAge.value),
-      categorie: sexePlayer.value,
+      categorie: playerSexe.value,
       niveau: niveauPlayer.value,
       club: playerClub.value,
       typeFoot: footCategoriePlayer.value,
@@ -52,6 +51,11 @@ submitButton.addEventListener("click",() => {
     },
   };
 
+  if (newPlayer.attributs.photo == "") {
+    newPlayer.attributs.photo =
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+  }
+
   initialPlayer.push(newPlayer);
   console.log(initialPlayer);
 
@@ -60,30 +64,23 @@ submitButton.addEventListener("click",() => {
   localStorage.setItem("caract", JSON.stringify(initialPlayer));
   console.log(localStorage);
 
-
   document.getElementById("profile").style.display = "flex";
   document.getElementById("editProfile").style.display = "none";
 });
-
-
 
 document.getElementById("editButton").addEventListener("click", () => {
   document.getElementById("profile").style.display = "none";
   document.getElementById("editProfile").style.display = "flex";
 });
 
+// fonctionalitées menu burger
 
+var openBtn = document.getElementById("openBtn");
 
-// document.getElementsByClassName("navabar").getElementsByClassName("menuBurger").addEventListener("click", () => {
-//   document.getElementsByClassName("lien").style.display="flex"
-// });
+openBtn.addEventListener("click", () => {
+  openNav();
+});
 
-// document.getElementsByClassName("lien").addEventListener("click", () => {
-//   document.getElementsByClassName("lien").style.display="none"
-// });
-
-
-document.getElementById("delete").addEventListener("click" , ()=>{
-// localStorage.clear()
-console.log(fesdg);
-})
+function openNav() {
+  sidenav.classList.add("active");
+}

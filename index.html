@@ -8,19 +8,27 @@
     <script src="index.js" defer></script>
   </head>
   <body>
-    <header></header>
+    <header>
+      <img src="images/logoUE1.png" alt="" id="logo" />
+      <div id="siteName">Kootlinf</div>
+    </header>
 
     <nav class="navbar">
-      <a id="siteName" href="index.html">Kootlinf</a>
-      <div class="lien">
+      <div id="sideNav" class="lien">
         <ul>
-          <li><a href="pageAcceuil.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="pageLink.html">Link</a></li>
           <li><a href="pageContact.html">Contact</a></li>
           <li><a href="pageProfil.html">Profile</a></li>
         </ul>
       </div>
-      <svg class="menuBurger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
+      <a href="#" id="openBtn" onclick="openNav()">
+        <span class="menuBurger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </a>
     </nav>
 
     <main>
@@ -43,7 +51,7 @@
         </p>
       </div>
       <div id="part3">
-        <img src="photo2.avif" alt="photo agent football" />
+        <img src="images/photo2.avif" alt="photo agent football" />
         <div id="sousPart3">
           <h3>monTitre3</h3>
           <p>
@@ -68,7 +76,7 @@
             perferendis doloribus non fugit dolorem hic!
           </p>
         </div>
-        <img src="photo3.avif" alt="photo cage désert" />
+        <img src="images/photo3.avif" alt="photo cage désert" />
       </div>
       <div id="sousPart5">
         <h3>monTitre3</h3>
@@ -93,13 +101,15 @@
         </p>
       </div>
       <div id="part5">
-        <img src="photo4.avif" alt="photo footballeur afrique" />
+        <img src="images/photo4.avif" alt="photo footballeur afrique" />
         <div id="img5">
-          <img src="photo5.avif" alt="photo stade de foot" />
-          <img src="photo7.avif" alt="photo footballeuse" />
+          <img src="images/photo5.avif" alt="photo stade de foot" />
+          <img src="images/photo7.avif" alt="photo footballeuse" />
         </div>
       </div>
     </main>
-    <footer>ceci est mon footer</footer>
+    <footer id="footerAcceuil">
+      <a href="mentionsLegales.html" target="_blank">Mentions légales</a>
+    </footer>
   </body>
 </html>

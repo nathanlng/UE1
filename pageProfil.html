@@ -9,27 +9,28 @@
     <script src="profile.js" defer></script>
   </head>
   <body>
-    <header></header>
+    <header>
+      <img src="images/logoUE1.png" alt="" id="logo" />
+      <div id="siteName">Kootlinf</div>
+    </header>
     <nav class="navbar">
-      <a id="siteName" href="index.html">Kootlinf</a>
-      <div class="lien">
+      <div id="sideNav" class="lien">
         <ul>
-          <li><a href="pageAcceuil.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="pageLink.html">Link</a></li>
           <li><a href="pageContact.html">Contact</a></li>
           <li><a href="pageProfil.html">Profile</a></li>
         </ul>
       </div>
-      <svg
-        class="menuBurger"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 448 512"
-      >
-        <path
-          d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"
-        />
-      </svg>
+      <a href="#" id="openBtn">
+        <span class="menuBurger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </a>
     </nav>
+    <h2>Mon profil</h2>
     <div id="profile">
       <div id="profileContainer">
         <div id="photoContainer"></div>
@@ -50,7 +51,7 @@
             </tr>
             <tr>
               <td>club:</td>
-              <td id="pClub"></td>
+              <td id="club"></td>
             </tr>
             <tr>
               <td>foot:</td>
@@ -68,8 +69,6 @@
           <div id="bio"></div>
         </div>
       </div>
-      <div id="testId"></div>
-      <div id="testImg"></div>
       <button id="editButton" class="buttonStyle">edit profile</button>
     </div>
 
@@ -113,7 +112,6 @@
                 min="14"
                 max="50"
                 class="inputForm"
-                value="18"
               />
             </td>
           </tr>
@@ -225,7 +223,8 @@
           </tr>
           <tr>
             <td>photo</td>
-            <td><input id="imagePlayer" type="file" accept="image/png, image/avif, image/jpeg"></td>
+            <td><input id="imagePlayer" type="url" class="inputForm" /></td>
+            <!-- <td><input id="imagePlayer" type="file" accept="image/png, image/avif, image/jpeg"></td> -->
           </tr>
           <tr>
             <td><p>ma biographie</p></td>
@@ -244,5 +243,8 @@
         </div>
       </form>
     </div>
+    <footer>
+      <a href="mentionsLegales.html" target="_blank">Mentions légales</a>
+    </footer>
   </body>
 </html>
