@@ -1,5 +1,6 @@
 <?php
-
+    include ("includes/header.php");
+    require ("autoload.php");
 include_once("db.php");
 include_once("fonctions.php");
 
@@ -8,7 +9,7 @@ echo "creer un compte";
 
 
 inscription_form();
-echo "<a  href='/php/?page=login.php'>se connecter</a>";
+echo "<a  href='/php/login.php'>se connecter</a>";
 
 // creer utilisateur avec info formulaire
 if (!empty($_POST["login"]) && !empty($_POST["password"]) && !empty($_POST["srole"])) {

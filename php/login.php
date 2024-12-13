@@ -1,5 +1,6 @@
 <?php
-
+    include ("includes/header.php");
+    require ("autoload.php");
 require_once("fonctions.php");
 require_once("db.php");
 include_once("sessions.php");
@@ -14,11 +15,11 @@ if (isset($_GET["deco"]) && isset($_SESSION["login"])) {
     // echo "compte deconnecte";
 
 }
-
 // verifier info connexion 
 if (is_logged()) {
 message_login();
-echo "<a href='?page=login.php&deco=1'>Déconnexion</a>";
+echo "<a href='login.php?deco=1'>Déconnexion</a>";
+var_dump(User::getOne($_SESSION["sid"]));
 } 
 else if(!empty($_POST["login"]) && !empty($_POST["password"])){
 $sql = "SELECT * FROM user WHERE login = '".$_POST["login"]."'";
@@ -35,21 +36,22 @@ $sql = "SELECT * FROM user WHERE login = '".$_POST["login"]."'";
             $_SESSION["srole"]=$data[3];
             logs("s'est connecté");
             message_login();
-            echo "<a href='?page=login.php&deco=1'>Déconnexion</a>";
+            echo "<a href='login.php&deco=1'>Déconnexion</a>";
             
         } else{
             echo "identifiant / mot de passe incorrect";
             affiche_form();
-            echo "<a  href='/php/?page=inscription.php'>s'inscrire</a>";
+            echo "<a  href='/php/inscription.php'>s'inscrire</a>";
         }
 }else{
     echo "identifiant / mot de passe incorrect";
     affiche_form();
-    echo "<a  href='/php/?page=inscription.php'>s'inscrire</a>";
+    echo "<a  href='/php/inscription.php'>s'inscrire</a>";
 }
 
 } else {
     affiche_form();
-   echo "<a  href='/php/?page=inscription.php'>s'inscrire</a>";
+   echo "<a  href='/php/inscription.php'>s'inscrire</a>";
 
 }
+?>

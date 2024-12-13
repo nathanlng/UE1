@@ -15,7 +15,6 @@ footer {
   bottom: 0;
 }
 
-
 body {
   display: flex;
   flex-direction: column;
@@ -27,9 +26,9 @@ body {
 /* css responsive de la navbar */
 
 @media (min-width: 501px) {
-  #logoName{
-display: flex;
-align-items: center;
+  #logoName {
+    display: flex;
+    align-items: center;
   }
 
   #siteName {
@@ -48,10 +47,9 @@ align-items: center;
     color: #f1f1f1;
     align-items: center;
     justify-content: center;
-    position: fixed;
   }
 
-  main{
+  main {
     margin-top: 105px;
     margin-bottom: 15px;
   }
@@ -63,15 +61,13 @@ align-items: center;
   }
 
   .navbar {
+    position: relative;
     background-color: #98c482;
     height: 70px;
     width: 100vw;
     display: flex;
-   justify-content: space-around;
+    justify-content: space-around;
     align-items: center;
-    position: fixed;
-    top: 35px;
-
   }
 
   .lien ul {
@@ -100,10 +96,10 @@ align-items: center;
 }
 
 @media (max-width: 500px) {
-#logoName{
-  display: flex;
-  align-items: center;
-}
+  #logoName {
+    display: flex;
+    align-items: center;
+  }
 
   #siteName {
     list-style: none;
@@ -130,7 +126,6 @@ align-items: center;
 
   .navbar {
     background-color: #98c482;
-
     display: flex;
     box-sizing: border-box;
     justify-content: space-between;
@@ -201,8 +196,6 @@ align-items: center;
 }
 
 /* styles des tableau et boutton */
-
-
 
 #conditionPar {
   display: flex;
@@ -386,15 +379,14 @@ h2 {
     left: 5%;
     top: 80%;
   }
-  
-  
-  #caracteristiqueProfile{
+
+  #caracteristiqueProfile {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
   }
-  
-  #infoProfile{
+
+  #infoProfile {
     width: 100%;
   }
 
@@ -403,7 +395,7 @@ h2 {
     width: 100%;
   }
 
-  #photoContainer{
+  #photoContainer {
     border: 2px solid #c4d9ba;
   }
 }
@@ -480,18 +472,16 @@ h2 {
     position: relative;
     left: 5%;
     top: 100%;
-  
   }
-  
-  
-  #caracteristiqueProfile{
+
+  #caracteristiqueProfile {
     width: 100%;
     display: flex;
-  justify-content: space-around;
-  border-top:2px solid #98c482;
+    justify-content: space-around;
+    border-top: 2px solid #98c482;
   }
-  
-  #infoProfile{
+
+  #infoProfile {
     width: 50%;
   }
 
@@ -500,7 +490,7 @@ h2 {
     width: 40%;
   }
 
-  #photoContainer{
+  #photoContainer {
     border: 5px solid #c4d9ba;
   }
 }
@@ -567,8 +557,8 @@ h2 {
 }
 
 #photoContainer {
- width: 10vw;
- height: 10vw;
+  width: 10vw;
+  height: 10vw;
   /* max-width: 150px;
   max-height: 150px; */
   border-radius: 100%;
@@ -592,13 +582,12 @@ h2 {
   height: auto;
 }
 
-
 footer a {
   text-decoration: none;
   color: #f1f1f1;
 }
 
-#nouveauté{
+#nouveauté {
   background-color: aqua;
   width: 100vw;
   max-width: 1000px;
@@ -607,24 +596,24 @@ footer a {
   margin-top: 20px;
 }
 
-.celluleTab{
+.celluleTab {
   width: 90%;
   display: flex;
- margin: 10px;
+  margin: 10px;
 }
 
 /* #caracteristiqueProfile{
 
 } */
 
-.cellule{
+.cellule {
   width: 100px;
   height: auto;
 }
 
-#banniere{
-display: flex;
-  width: 100% ;
+#banniere {
+  display: flex;
+  width: 100%;
   height: 10vw;
   margin-bottom: 9%;
   background-image: url(https://images.unsplash.com/photo-1632300951015-42d7df909581?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
@@ -633,7 +622,7 @@ display: flex;
   background-size: cover;
 }
 
-.tableau{
+.tableau {
   border: 3px solid #98c482;
   background-color: #c4d9ba;
   border-radius: 10px;
@@ -646,7 +635,6 @@ display: flex;
 }
 
 #formulaire {
-
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -654,6 +642,6 @@ display: flex;
   align-items: center;
 }
 
-#removeButton{
+#removeButton {
   display: none;
 }
