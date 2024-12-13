@@ -15,25 +15,28 @@ footer {
   bottom: 0;
 }
 
-#footerAcceuil {
-  position: relative;
-}
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   height: 100%;
+  background-color: #dbe0d9;
 }
 
 /* css responsive de la navbar */
 
 @media (min-width: 501px) {
+  #logoName{
+display: flex;
+align-items: center;
+  }
+
   #siteName {
     list-style: none;
     text-decoration: none;
-    color: white;
-    font-size: 2.5vw;
+    color: black;
+    font-size: 40px;
     font-family: Georgia, serif;
   }
 
@@ -41,34 +44,41 @@ body {
     display: flex;
     background-color: black;
     width: 100vw;
-    height: 7vw;
-    max-height: 70px;
+    height: 35px;
     color: #f1f1f1;
     align-items: center;
     justify-content: center;
+    position: fixed;
+  }
+
+  main{
+    margin-top: 105px;
+    margin-bottom: 15px;
   }
 
   #logo {
-    width: auto;
-    height: 7vw;
+    width: 70px;
+    height: 70px;
     max-height: 90px;
   }
 
   .navbar {
     background-color: #98c482;
-    padding: 20px;
-    height: 10vw;
-    max-height: 100px;
+    height: 70px;
+    width: 100vw;
     display: flex;
-    box-sizing: border-box;
-    width: 100%;
+   justify-content: space-around;
     align-items: center;
+    position: fixed;
+    top: 35px;
+
   }
 
   .lien ul {
     list-style: none;
     display: flex;
     width: 100vw;
+    margin-left: 30px;
   }
 
   .lien ul li a {
@@ -90,10 +100,15 @@ body {
 }
 
 @media (max-width: 500px) {
+#logoName{
+  display: flex;
+  align-items: center;
+}
+
   #siteName {
     list-style: none;
     text-decoration: none;
-    color: white;
+    color: black;
     font-size: 20px;
     font-family: Georgia, serif;
   }
@@ -102,7 +117,7 @@ body {
     display: flex;
     background-color: black;
     width: 100vw;
-    height: 50px;
+    height: 25px;
     color: #f1f1f1;
     align-items: center;
     justify-content: center;
@@ -178,6 +193,7 @@ body {
     height: 4px;
     background-color: black;
     margin: 3px 0;
+    z-index: 1;
     margin-right: 20px;
     border-radius: 2px;
     margin-left: 15px;
@@ -186,19 +202,13 @@ body {
 
 /* styles des tableau et boutton */
 
-.formulaire {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 50px;
-  padding: 0;
-}
+
 
 #conditionPar {
   display: flex;
   flex-direction: row;
   margin-bottom: 3%;
+  justify-self: center;
 }
 
 #conditionPar > input {
@@ -215,18 +225,25 @@ body {
   font-size: 150%;
   font-weight: bold;
   border: 2px solid#3053f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
 }
 
 .tabFormulaire {
+  display: flex;
+  flex-direction: column;
   border: 3px solid #98c482;
   background-color: #c4d9ba;
   border-radius: 10px;
   margin-bottom: 30px;
   padding: 20px;
+  width: 700px;
 }
 
 .inputForm {
-  width: 70%;
+  width: 150px;
   height: auto;
   padding-left: 3px;
   border-radius: 10px;
@@ -315,6 +332,7 @@ h2 {
     padding: 20px;
     width: 70vw;
     height: auto;
+    max-width: 1000px;
   }
 
   #part3 {
@@ -357,6 +375,36 @@ h2 {
 
   #sousPart4 h3 {
     margin-bottom: 10px;
+  }
+
+  #username {
+    font-size: 100%;
+    font-weight: bold;
+    display: flex;
+    margin: 10px;
+    position: relative;
+    left: 5%;
+    top: 80%;
+  }
+  
+  
+  #caracteristiqueProfile{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  #infoProfile{
+    width: 100%;
+  }
+
+  #bio {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  #photoContainer{
+    border: 2px solid #c4d9ba;
   }
 }
 
@@ -423,6 +471,38 @@ h2 {
   #sousPart4 h3 {
     margin-bottom: 10px;
   }
+
+  #username {
+    font-size: 150%;
+    font-weight: bold;
+    display: flex;
+    margin: 10px;
+    position: relative;
+    left: 5%;
+    top: 100%;
+  
+  }
+  
+  
+  #caracteristiqueProfile{
+    width: 100%;
+    display: flex;
+  justify-content: space-around;
+  border-top:2px solid #98c482;
+  }
+  
+  #infoProfile{
+    width: 50%;
+  }
+
+  #bio {
+    margin-top: 10px;
+    width: 40%;
+  }
+
+  #photoContainer{
+    border: 5px solid #c4d9ba;
+  }
 }
 
 @media (min-width: 501px) and (max-width: 1200px) {
@@ -463,7 +543,7 @@ h2 {
 }
 
 #editProfile {
-  width: 100vw;
+  width: 100%;
   display: none;
   justify-content: center;
   flex-direction: column;
@@ -487,21 +567,22 @@ h2 {
 }
 
 #photoContainer {
-  width: 150px;
-  height: 150px;
+ width: 10vw;
+ height: 10vw;
+  /* max-width: 150px;
+  max-height: 150px; */
   border-radius: 100%;
   background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
-  border: 3px solid #98c482;
+
   background-size: cover;
-  display: flex;
-  align-self: center;
+  position: relative;
+  top: 40%;
+  left: 5%;
+  z-index: 1;
 }
 
 #profileContainer {
-  display: flex;
   padding: 20px;
-
-  flex-direction: column;
   border: 3px solid #98c482;
   background-color: #c4d9ba;
   border-radius: 10px;
@@ -511,19 +592,68 @@ h2 {
   height: auto;
 }
 
-#username {
-  font-size: 150%;
-  font-weight: bold;
-  display: flex;
-  margin: 10px;
-  align-self: center;
-}
-
-#bio {
-  margin-top: 10px;
-}
 
 footer a {
   text-decoration: none;
   color: #f1f1f1;
+}
+
+#nouveauté{
+  background-color: aqua;
+  width: 100vw;
+  max-width: 1000px;
+  height: 400px;
+  justify-self: center;
+  margin-top: 20px;
+}
+
+.celluleTab{
+  width: 90%;
+  display: flex;
+ margin: 10px;
+}
+
+/* #caracteristiqueProfile{
+
+} */
+
+.cellule{
+  width: 100px;
+  height: auto;
+}
+
+#banniere{
+display: flex;
+  width: 100% ;
+  height: 10vw;
+  margin-bottom: 9%;
+  background-image: url(https://images.unsplash.com/photo-1632300951015-42d7df909581?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-position: 10% 70%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tableau{
+  border: 3px solid #98c482;
+  background-color: #c4d9ba;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 20px;
+  width: 70vw;
+  height: auto;
+  max-width: 1200px;
+  margin-top: 50px;
+}
+
+#formulaire {
+
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  justify-self: center;
+  align-items: center;
+}
+
+#removeButton{
+  display: none;
 }

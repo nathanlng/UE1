@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <header></header>
+
+    <nav class="navbar">
+      <div id="logoName">
+        <img src="images/logoUE1.png" alt="" id="logo" />
+        <a href="index.html" id="siteName">Kootlinf</a>
+      </div>
+      <div id="sideNav" class="lien">
+        <ul>
+          <li><a href="acceuil.html">Home</a></li>
+          <li><a href="pageLink.html">Link</a></li>
+          <li><a href="pageContact.html">Contact</a></li>
+          <li><a href="pageProfil.html">Profile</a></li>
+        </ul>
+      </div>
+      <a href="#" id="openBtn" onclick="openNav()">
+        <span class="menuBurger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </a>
+    </nav>
+    <main>
+      <h2>Mon formulaire de contact</h2>
+      <form method="">
+      <div id="formulaire" class="tableau">
+        <div class="celluleTab">
+          <div class="cellule">prenom</div>
+          <input
+            type="text"
+            name="unPrenom"
+            placeholder="toto"
+            required
+            class="inputForm"
+          />
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">nom</div>
+          <input
+            type="text"
+            name="unNom"
+            placeholder="tutu"
+            required
+            class="inputForm"
+          />
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">votre pays</div>
+          <select required name="monPays" class="inputForm">
+            <option value="0">--choisissez--</option>
+            <option value="1" selected>France</option>
+            <option value="2">autre</option>
+          </select>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">Votre ville</div>
+          <input
+            type="text"
+            name="uneVille"
+            required
+            placeholder="Tombouctou"
+            class="inputForm"
+          />
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">Votre mail</div>
+
+          <input
+            type="email"
+            name="unMail"
+            required
+            placeholder="toto.tutu@mail.com"
+            class="inputForm"
+          />
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">Votre commentaire</div>
+
+          <textarea
+            name="unCommentaire"
+            id=""
+            placeholder="Mon avis ..."
+            class="inputForm"
+          ></textarea>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">Votre note</div>
+
+          <input
+            type="range"
+            name="Range"
+            value=""
+            min="0"
+            max="5"
+            step="0.5"
+            class="inputForm"
+          />
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">Fichiers additionnels</div>
+          <input type="file" multiple />
+        </div>
+      </div>
+      <div id="conditionPar">
+        <input type="checkbox" name="condition"  required />
+          <label for="condition">
+            accepter les
+            <a href="#" target="_blank" class="conditionPartage"
+              >condition d'utilisation et de partage</a
+            >
+          </label>
+        </div>
+        <button type="submit" class="buttonStyle">envoyer</button>
+        <button type="reset" class="buttonStyle">réinitialiser</button>
+      </form>
+      <footer>
+        <a href="mentionsLegales.html" target="_blank">Mentions légales</a>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -4,7 +4,8 @@ const playersList = document.getElementById("container");
 
 const newPlayerList = (element) => {
   const newPlayerProfile = document.createElement("div");
-  newPlayerProfile.setAttribute("class", "player");
+  newPlayerProfile.setAttribute("class", "player")
+  newPlayerProfile.setAttribute("onclick",`clickPlayer(${element.id})`);
 
   const newPlayerImage = document.createElement("img");
   newPlayerImage.setAttribute("src", element.attributs.photo);
@@ -29,11 +30,17 @@ const newPlayerList = (element) => {
   postePied.innerText += element.attributs.poste;
   postePied.innerText += element.attributs.piedFort;
 
+  const supprButton = document.createElement("button")
+  supprButton.setAttribute("onclick",`removePlayer(${element.id})`)
+  supprButton.setAttribute("id","removeButton")
+  supprButton.innerText += "suppr"
+
   newPlayerProfile.appendChild(newPlayerImage);
   newPlayerProfile.appendChild(newPlayerTitle);
   newPlayerProfile.appendChild(newPlayerAttribut);
   newPlayerProfile.appendChild(newNiveau);
   newPlayerProfile.appendChild(typeFootball);
+  newPlayerProfile.appendChild(supprButton)
 
   playersList.appendChild(newPlayerProfile);
 };

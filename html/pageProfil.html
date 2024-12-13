@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+    <script src="profile.js" defer></script>
+  </head>
+  <body>
+    <header></header>
+
+    <nav class="navbar">
+      <div id="logoName">
+        <img src="images/logoUE1.png" alt="" id="logo" />
+        <a href="index.html" id="siteName">Kootlinf</a>
+      </div>
+      <div id="sideNav" class="lien">
+        <ul>
+          <li><a href="acceuil.html">Home</a></li>
+          <li><a href="pageLink.html">Link</a></li>
+          <li><a href="pageContact.html">Contact</a></li>
+          <li><a href="pageProfil.html">Profile</a></li>
+        </ul>
+      </div>
+      <a href="#" id="openBtn" onclick="openNav()">
+        <span class="menuBurger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </a>
+    </nav>
+    <main>
+      <h2>Mon profil</h2>
+      <div id="profile">
+        <div id="profileContainer" class="tableau">
+          <div id="banniere">
+            <div id="photoContainer"></div>
+            <div id="username"><p id="userN">nom</p></div>
+          </div>
+          <div></div>
+          <div id="caracteristiqueProfile">
+            <div id="infoProfile">
+              <div class="celluleTab">
+                <div class="cellule">age:</div>
+                <div id="age"></div>
+              </div>
+              <div class="celluleTab">
+                <div class="cellule">categorie:</div>
+                <div id="sexe"></div>
+              </div>
+              <div class="celluleTab">
+                <div class="cellule">divison:</div>
+                <div id="niveau"></div>
+              </div>
+              <div class="celluleTab">
+                <div class="cellule">club:</div>
+                <div id="club"></div>
+              </div>
+              <div class="celluleTab">
+                <div class="cellule">foot:</div>
+                <div id="typeF"></div>
+              </div>
+              <div class="celluleTab">
+                <div class="cellule">poste:</div>
+                <div id="poste"></div>
+              </div>
+              <div class="celluleTab">
+                <div class="cellule">pied fort:</div>
+                <div id="piedF"></div>
+              </div>
+            </div>
+
+            <div id="bio" class="celluleTab"></div>
+          </div>
+        </div>
+        <button id="editButton" class="buttonStyle">edit profile</button>
+      </div>
+
+      <div id="editProfile">
+        <div class="tableau">
+          <div class="celluleTab">
+          <div class="cellule">nom</div>
+          <div>
+            <input
+              id="profileNom"
+              type="text"
+              placeholder="nom"
+              class="inputForm"
+            />
+          </div>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">prenom</div>
+          <div>
+            <input
+              id="profilePrenom"
+              type="text"
+              placeholder="prenom"
+              class="inputForm"
+            />
+          </div>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">age</div>
+          <div>
+            <input
+              type="number"
+              id="playerAge"
+              min="14"
+              max="50"
+              class="inputForm"
+            />
+          </div>
+        </div>
+
+        <div class="celluleTab">
+          <div class="cellule">catégorie</div>
+          <div>
+            <select name="sexe" id="sexePlayer" required class="inputForm">
+              <option value="">--choisissez--</option>
+              <option value="H">masculin</option>
+              <option value="F">féminine</option>
+            </select>
+          </div>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">niveau</div>
+          <div>
+            <select name="niveau" id="niveauPlayer" required class="inputForm">
+              <option value="">--choisissez--</option>
+              <option value="Autre">Autre</option>
+              <option value="L1">Ligue 1</option>
+              <option value="L2">Ligue 2</option>
+              <option value="N1">National 1</option>
+              <option value="N2">National 2</option>
+              <option value="N3">National 3</option>
+              <option value="R1">Regional 1</option>
+              <option value="R2">Regional 2</option>
+              <option value="R3">Regional 3</option>
+              <option value="R4">Regional 4</option>
+              <option value="D1">Departemental 1</option>
+              <option value="D2">Departemental 2</option>
+              <option value="D3">Departemental 3</option>
+              <option value="D4">Departemental 4</option>
+              <option value="D5">Departemental 5</option>
+            </select>
+          </div>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">club</div>
+          <div>
+            <input
+              type="text"
+              id="playerClub"
+              placeholder="fc sochaux"
+              class="inputForm"
+            />
+          </div>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">poste</div>
+          <div>
+            <select name="poste" id="postePlayer" class="inputForm">
+              <option value="">--choisissez--</option>
+              <option value="GK">GK</option>
+              <option value="CB">CB</option>
+              <option value="DD">DD</option>
+              <option value="DG">DG</option>
+              <option value="MDC">MDC</option>
+              <option value="MC">MC</option>
+              <option value="MOC">MOC</option>
+              <option value="MD">MD</option>
+              <option value="MG">MG</option>
+              <option value="AD">AD</option>
+              <option value="AG">AG</option>
+              <option value="BU">BU</option>
+              <option value="Milieu">Milieu de terrain</option>
+              <option value="Latéral">Latéral</option>
+              <option value="Défenseur">Défenseur</option>
+              <option value="Ailier">Ailier</option>
+              <option value="Attaquant">Attaquant</option>
+              <option value="Piston">Piston</option>
+            </select>
+          </div>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">pied fort</div>
+          <div>
+            <select name="piedFort" id="piedFortPlayer" class="inputForm">
+              <option value="">--choisissez--</option>
+              <option value="D">Droit</option>
+              <option value="G">Gauche</option>
+              <option value="Ambidextre">Ambidextre</option>
+            </select>
+          </div>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">type de foot</div>
+          <div>
+            <select
+              name="footCategorie"
+              id="footCategoriePlayer"
+              required
+              class="inputForm"
+            >
+              <option value="">--choisissez--</option>
+              <option value="F11">foot à 11</option>
+              <option value="F5">foot à 5</option>
+              <option value="F6">foot à 6</option>
+              <option value="Futsal">futsal</option>
+              <option value="Foot-handi">foot-handi</option>
+              <option value="beach">beach soccer</option>
+            </select>
+          </div>
+        </div>
+        <div class="celluleTab">
+          <div class="cellule">photo</div>
+          <div><input id="imagePlayer" type="url" class="inputForm" /></div>
+          <!-- <div><input id="imagePlayer" type="file" accept="image/png, image/avif, image/jpeg"></div> -->
+        </div>
+        <div class="celluleTab">
+          <div class="cellule"><p>ma biographie</p></div>
+          <div>
+            <input
+              id="descriptionButton"
+              type="text"
+              placeholder="ma biographie"
+              class="inputForm"
+            />
+          </div>
+        </div></div>
+        
+
+        <div id="partProfil">
+          <button id="submitButton" class="buttonStyle">ok</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a href="mentionsLegales.html" target="_blank">Mentions légales</a>
+    </footer>
+  </body>
+</html>

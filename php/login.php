@@ -1,0 +1,55 @@
+<?php
+
+require_once("fonctions.php");
+require_once("db.php");
+include_once("sessions.php");
+
+// condition pour deconnecter
+if (isset($_GET["deco"]) && isset($_SESSION["login"])) {
+    
+    logs("s'est deconnecté");
+    unset($_SESSION["login"]);
+    unset($_SESSION["sid"]);
+    setcookie("login","",time()-3600);
+    // echo "compte deconnecte";
+
+}
+
+// verifier info connexion 
+if (is_logged()) {
+message_login();
+echo "<a href='?page=login.php&deco=1'>Déconnexion</a>";
+} 
+else if(!empty($_POST["login"]) && !empty($_POST["password"])){
+$sql = "SELECT * FROM user WHERE login = '".$_POST["login"]."'";
+    $result = mysqli_query($db,$sql);
+    if($data = mysqli_fetch_row($result)){
+
+        $hash = $data[2];
+        if (password_verify($_POST["password"],$hash)) {
+            $valeur = $_POST["login"]."|".password_hash($_POST["password"],PASSWORD_DEFAULT);
+                    setcookie("login",$valeur,time()+3600*24);
+            echo "c'est good";
+            $_SESSION["login"]=$_POST["login"];
+            $_SESSION["sid"]=$data[0];
+            $_SESSION["srole"]=$data[3];
+            logs("s'est connecté");
+            message_login();
+            echo "<a href='?page=login.php&deco=1'>Déconnexion</a>";
+            
+        } else{
+            echo "identifiant / mot de passe incorrect";
+            affiche_form();
+            echo "<a  href='/php/?page=inscription.php'>s'inscrire</a>";
+        }
+}else{
+    echo "identifiant / mot de passe incorrect";
+    affiche_form();
+    echo "<a  href='/php/?page=inscription.php'>s'inscrire</a>";
+}
+
+} else {
+    affiche_form();
+   echo "<a  href='/php/?page=inscription.php'>s'inscrire</a>";
+
+}
