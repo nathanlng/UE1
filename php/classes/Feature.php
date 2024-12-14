@@ -1,22 +1,24 @@
 <?php
-class Feature{
+class Feature {
     private $id;
-    private $name;
-    private $typeOf;
+    private $idCategory;
+    private $idPlayer;
+    private $value;
 
-    public function __construct($id,$name,$typeOf) {
-        $this->setId($id);
-        $this->setName($name);
-        $this->setTypeOf($typeOf);
+    public function __construct($idCategory,$value,$idPlayer) {
+        $this->setValue($value);
+        $this->setIdCategory($idCategory);
+        $this->setIdPlayer($idPlayer);
     }
 
     public function update()
     {
         $requete = DB::getConnection()->prepare("
             update feature
-                set name=?
+                set
+                 value=?
                 where id=?");
-        $requete->bindValue(1, $this->getName());
+        $requete->bindValue(1, $this->getValue());
         $requete->bindValue(2, $this->getId());
         $requete->execute();
     }
@@ -29,36 +31,13 @@ class Feature{
         $requete->execute();
     }
 
-    public static function getAll(){
-
-        /* utilise la fonction statique dans DB qui renvoie un objet PDO.
-        Cet objet PDO a une fonction "prepare" qui prend comme paramètre la requete SQL
-        */
-        $requete = DB::getConnection()->prepare("select * from feature");
-        $requete->execute();// execution de la requete
-        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
-        $tabObjets = [];
-        foreach($tableau as $ligne){
-            $tabObjets[] = new Feature(
-                $ligne["id"],
-                $ligne["name"],
-                $ligne["type_of"],);
-        }
-        return $tabObjets;
+    public function insert(){
+        $requete = DB::getConnection()->prepare("insert into feature (id_category,id_player,value) values(?,?,?)");
+        // $requete->blindValue(1,);
+        $requete->execute([$this->getIdCategory(),$this->getIdPlayer(),$this->getValue()]);
+        $this->id = DB::getConnection()->lastInsertId();
     }
 
-    public static function getOne($id)
-    {
-        $requete = DB::getConnection()->prepare("select * from feature where id = ?");
-        $requete->execute([$id]); // execution de la requete avec le paramètre à la place de ? dans le texte de la requête
-        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
-        $objet = new Feature(
-            $tableau[0]["id"],
-            $tableau[0]["name"],
-            $tableau[0]["type_of"]
-        );
-        return $objet;
-    }
 
     public function getId(){
         return $this->id;
@@ -68,21 +47,27 @@ class Feature{
         $this->id = $value;
     }
 
-    public function getName(){
-        return $this->name;
+    public function getIdPlayer(){
+        return $this->idPlayer;
     }
 
-    public function setName($value){
-        $this->name = $value;
+    public function setIdPlayer($value){
+        $this->idPlayer = $value;
     }
 
-    public function getTypeOf(){
-        return $this->typeOf;
+    public function getValue(){
+        return $this->value;
     }
 
-    public function setTypeOf($value){
-        $this->typeOf = $value;
+    public function setValue($value){
+        $this->value = $value;
     }
 
+    public function getIdCategory(){
+        return $this->idCategory;
+    }
 
+    public function setIdCategory($value){
+        $this->idCategory = $value;
+    }
 }

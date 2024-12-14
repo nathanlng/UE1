@@ -1,7 +1,7 @@
 <?php
 require_once("../autoload.php");
 
-$systeme = new Choice($_POST["id"], $_POST["name"],$_POST["value"],$_POST["idCategory"]);
+$systeme = new Category($_POST["id"], $_POST["name"],$_POST["typeOf"]);
 
 $systeme->update();
 

@@ -9,7 +9,7 @@ include_once("sessions.php");
 <h2>Mon formulaire de contact</h2>
       <form method="POST" action="functions/ffeedbackinsert.php">
       <div id="formulaire" class="tableau">
-        <div class="celluleTab">
+        <!-- <div class="celluleTab">
           <div class="cellule">prenom</div>
           <input
             type="text"
@@ -28,7 +28,7 @@ include_once("sessions.php");
             required
             class="inputForm"
           />
-        </div>
+        </div> -->
         <div class="celluleTab">
           <div class="cellule">votre pays</div>
           <select required name="fbCountry" class="inputForm">
@@ -109,8 +109,7 @@ include_once("sessions.php");
       <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Actions</th>
+      <th scope="col">vos avis</th>
     </tr>
   </thead>
   <tbody>
@@ -121,10 +120,6 @@ include_once("sessions.php");
         <td><?php echo $ligne->getTitle(); ?></td>
         <td><?php echo $ligne->getFeedback(); ?></td>
         <td><?php echo $ligne->getNote(); ?></td>
-        <td>
-        <a href="choiceUpdate.php?id=<?php echo ($ligne->getId()); ?>">Modifier</a>
-        <a href="functions/fchoicedelete.php?id=<?php echo ($ligne->getId()); ?>">Supprimer</a>
-        </td>
     </tr>
     <?php }?>
 </tbody>

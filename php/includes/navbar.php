@@ -14,7 +14,8 @@
           <?php 
           include ("sessions.php");
           if (is_admin()) {
-            echo "<li><a href='/php/features.php'>feature</a></li>";
+            echo "<li><a href='/php/category.php'>category</a></li>";
+            echo "<li><a href='/php/feedbackList.php'>feedback</a></li>";
           }
           ?>
         </ul>

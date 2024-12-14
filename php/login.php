@@ -17,9 +17,11 @@ if (isset($_GET["deco"]) && isset($_SESSION["login"])) {
 }
 // verifier info connexion 
 if (is_logged()) {
+
 message_login();
 echo "<a href='login.php?deco=1'>Déconnexion</a>";
-var_dump(User::getOne($_SESSION["sid"]));
+// var_dump(User::getOne($_SESSION["sid"]));
+header("location: profile.php");
 } 
 else if(!empty($_POST["login"]) && !empty($_POST["password"])){
 $sql = "SELECT * FROM user WHERE login = '".$_POST["login"]."'";
@@ -37,6 +39,7 @@ $sql = "SELECT * FROM user WHERE login = '".$_POST["login"]."'";
             logs("s'est connecté");
             message_login();
             echo "<a href='login.php&deco=1'>Déconnexion</a>";
+            header("location: profile.php");
             
         } else{
             echo "identifiant / mot de passe incorrect";

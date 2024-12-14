@@ -3,13 +3,13 @@ class Choice {
     private $id;
     private $name;
     private $value;
-    private $idFeature;
+    private $idCategory;
 
-    public function __construct($id,$name,$value,$idFeature) {
+    public function __construct($id,$name,$value,$idCategory) {
         $this->setId($id);
         $this->setName($name);
         $this->setValue($value);
-        $this->setIdFeature($idFeature);
+        $this->setIdCategory($idCategory);
     }
 
     public function update()
@@ -35,7 +35,7 @@ class Choice {
 
     public static function getAll(){
 
-        $requete = DB::getConnection()->prepare("select * from choice order by id_feature");
+        $requete = DB::getConnection()->prepare("select * from choice order by id_category");
         $requete->execute();// execution de la requete
         $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
         $tabObjets = [];
@@ -44,7 +44,23 @@ class Choice {
                 $ligne["id"],
                 $ligne["name"],
                 $ligne["value"],
-                $ligne["id_feature"]);
+                $ligne["id_category"]);
+        }
+        return $tabObjets;
+    }
+
+    public static function getChoice($id){
+
+        $requete = DB::getConnection()->prepare("select * from choice where id_category = ?");
+        $requete->execute([$id]);// execution de la requete
+        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
+        $tabObjets = [];
+        foreach($tableau as $ligne){
+            $tabObjets[] = new Choice(
+                $ligne["id"],
+                $ligne["name"],
+                $ligne["value"],
+                $ligne["id_category"]);
         }
         return $tabObjets;
     }
@@ -58,7 +74,7 @@ class Choice {
             $tableau[0]["id"],
             $tableau[0]["name"],
             $tableau[0]["value"],
-            $tableau[0]["id_feature"]
+            $tableau[0]["id_category"]
         );
         return $objet;
     }
@@ -87,11 +103,11 @@ class Choice {
         $this->value = $value;
     }
 
-    public function getIdFeature(){
-        return $this->idFeature;
+    public function getIdCategory(){
+        return $this->idCategory;
     }
 
-    public function setIdFeature($value){
-        $this->idFeature = $value;
+    public function setIdCategory($value){
+        $this->idCategory = $value;
     }
 }

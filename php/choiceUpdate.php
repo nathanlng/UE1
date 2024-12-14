@@ -11,7 +11,7 @@ $systeme = Choice::getOne($_GET["id"]);
     <input type="hidden" name="id" value="<?php echo ($_GET["id"]); ?>">
     Nom <input type="text" name="name" value="<?php echo ($systeme->getName()) ?>"/>
     <input type="text" name="value" value="<?php echo ($systeme->getValue()); ?>">
-    <input type="hidden" name="idFeature" value="<?php echo ($systeme->getIdFeature()); ?>">
+    <input type="hidden" name="idCategory" value="<?php echo ($systeme->getIdCategory()); ?>">
     <input type="submit" value="OK">
 </form>
 

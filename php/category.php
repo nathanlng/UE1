@@ -11,7 +11,7 @@ if (is_admin()) {
     if (!empty($_POST["nameCaract"]) && !empty($_POST["type"])) {
         $nameCaract= $_POST["nameCaract"];
         $type = $_POST["type"];
-       $sql= "INSERT INTO feature (name,type_of) VALUES ('$nameCaract','$type')";
+       $sql= "INSERT INTO category (name,type_of) VALUES ('$nameCaract','$type')";
        try {
         mysqli_query($db,$sql);
         echo "<p> ajout reussi</p>";
@@ -24,7 +24,7 @@ if (is_admin()) {
         $nameChoice= $_POST["nameChoice"];
         $idChoice = $_POST["idChoice"];
         $value = $_POST["valueChoice"];
-       $sql= "INSERT INTO choice (id_feature,name,value) VALUES ('$idChoice','$nameChoice','$value')";
+       $sql= "INSERT INTO choice (id_category,name,value) VALUES ('$idChoice','$nameChoice','$value')";
        try {
         mysqli_query($db,$sql);
         echo "<p> ajout reussi</p>";
@@ -53,19 +53,18 @@ if (is_admin()) {
     <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Actions</th>
+      <th scope="col">caracteristiques</th>
     </tr>
   </thead>
   <tbody>
-  <?php foreach(Feature::getAll() as $ligne){?>
+  <?php foreach(Category::getAll() as $ligne){?>
     <tr>
         <td><?php echo $ligne->getId(); ?></td>
         <td><?php echo $ligne->getName(); ?></td>
         <td><?php echo $ligne->getTypeOf(); ?></td>
         <td>
-        <a href="featureUpdate.php?id=<?php echo ($ligne->getId()); ?>">Modifier</a>
-        <a href="functions/ffeaturedelete.php?id=<?php echo ($ligne->getId()); ?>">Supprimer</a>
+        <a href="categoryUpdate.php?id=<?php echo ($ligne->getId()); ?>">Modifier</a>
+        <a href="functions/fcategorydelete.php?id=<?php echo ($ligne->getId()); ?>">Supprimer</a>
         </td>
     </tr>
     <?php }?>
@@ -83,7 +82,7 @@ if (is_admin()) {
 
     <?php
 
-    $sql= "SELECT name,id FROM feature WHERE type_of LIKE '%select%'";
+    $sql= "SELECT name,id FROM category WHERE type_of LIKE '%select%'";
     $result= mysqli_query($db,$sql);
     $data = mysqli_fetch_all($result) ;
     foreach ($data as $caract) {
@@ -97,8 +96,7 @@ if (is_admin()) {
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Actions</th>
+      <th scope="col">choix</th>
     </tr>
   </thead>
   <tbody>
@@ -107,7 +105,7 @@ if (is_admin()) {
         <td><?php echo $ligne->getId(); ?></td>
         <td><?php echo $ligne->getName(); ?></td>
         <td><?php echo $ligne->getValue(); ?></td>
-        <td><?php echo Feature::getOne($ligne->getIdFeature())->getName(); ?></td>
+        <td><?php echo Category::getOne($ligne->getIdCategory())->getName(); ?></td>
         <td>
         <a href="choiceUpdate.php?id=<?php echo ($ligne->getId()); ?>">Modifier</a>
         <a href="functions/fchoicedelete.php?id=<?php echo ($ligne->getId()); ?>">Supprimer</a>

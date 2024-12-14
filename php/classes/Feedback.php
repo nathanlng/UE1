@@ -29,6 +29,14 @@ class Feedback {
         $this->id = DB::getConnection()->lastInsertId();
     }
 
+    public static function delete($id)
+    {
+        $requete = DB::getConnection()->prepare("
+            delete from feedback where id=?");
+        $requete->bindValue(1, $id);
+        $requete->execute();
+    }
+
     public static function getAll(){
 
         /* utilise la fonction statique dans DB qui renvoie un objet PDO.
