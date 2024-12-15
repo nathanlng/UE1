@@ -3,7 +3,15 @@
 class Form {
 
     public static function createForm(){
-        echo "<form action='profile.php' method='POST'>";
+        echo "<form action='profile.php' method='POST'>
+            <label>nom</label>
+            <input type='text' name='name' required/><br />
+            <label>prenom</label>
+            <input type='text' name='firstName' required/><br />
+            <label>age</label>
+            <input type='number' name='age'/><br />
+            <label>biographie</label>
+            <input type='text' name='description'/><br />";
         foreach (Category::getAll() as $ligne) {
             if ($ligne->getTypeOf()=="text") {
                 echo "<label>".$ligne->getName()."</label>

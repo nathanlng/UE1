@@ -1,11 +1,9 @@
 <?php
 class User {
-    private $id;
-    private $login;
-    private $password;
-    private $typeOf;
-    private $player=null;
-    private $recruiter=null;
+    protected $id;
+    protected $login;
+    protected $password;
+    protected $typeOf;
 
     public function __construct($id,$login,$password,$typeOf) {
         $this->setId($id);
@@ -77,22 +75,6 @@ class User {
 
     public function setTypeOf($value){
         $this->typeOf = $value;
-    }
-
-    public function getPlayer(){
-        return $this->player;
-    }
-
-    public function setPlayer($value){
-        $this->player = $value;
-    }
-
-    public function getRecruiter(){
-        return $this->recruiter;
-    }
-
-    public function setRecruiter($value){
-        $this->recruiter = $value;
     }
 
 }

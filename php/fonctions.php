@@ -8,8 +8,8 @@ function inscription_form(){
     <input type="password" name="password"/>
     <label>profil</label>
     <select name="srole">
-    <option value="joueur">joueur</option>
-    <option value="recruteur">recruteur</option>
+    <option value="player">joueur</option>
+    <option value="recruiter">recruteur</option>
     </select>
     <input type="submit" value="Envoyer"/>
   </form>';
