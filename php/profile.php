@@ -12,6 +12,10 @@ message_login();
 echo "<a href='login.php?deco=1'>Déconnexion</a>";
 $player=Player::getOne($_SESSION["sid"]);
 // var_dump(Player::getOne($_SESSION["sid"])) ;
+// var_dump($player->getFeatures($player->getId()));
+if (is_joueur()){
+
+
 ?>
 
 <h2>Mon profil</h2>
@@ -26,32 +30,26 @@ $player=Player::getOne($_SESSION["sid"]);
             <div id="infoProfile">
               <div class="celluleTab">
                 <div class="cellule">age:</div>
-                <div id="age"<?php echo $player->getAge()?>></div>
+                <div id="age"><?php echo $player->getAge()?></div>
               </div>
-              <div class="celluleTab">
-                <div class="cellule">categorie:</div>
-                <div id="sexe"></div>
+              <?php
+              foreach ($player->getFeatures($player->getId()) as $feature) {
+                $category = Category::getOne($feature->getIdCategory());
+                ?>
+                <div class="celluleTab">
+                <div class="cellule"> <?php echo "<br />".$category->getName()?>:</div>
+                <div id="<?php echo $category->getName()?>">
+                  <?php
+                  if ($category->getTypeOf()== "select") {
+                  echo $feature->getChoice();
+                } else {
+                  echo $feature->getValue();
+                }
+                 ?></div>
               </div>
-              <div class="celluleTab">
-                <div class="cellule">divison:</div>
-                <div id="niveau"></div>
-              </div>
-              <div class="celluleTab">
-                <div class="cellule">club:</div>
-                <div id="club"></div>
-              </div>
-              <div class="celluleTab">
-                <div class="cellule">foot:</div>
-                <div id="typeF"></div>
-              </div>
-              <div class="celluleTab">
-                <div class="cellule">poste:</div>
-                <div id="poste"></div>
-              </div>
-              <div class="celluleTab">
-                <div class="cellule">pied fort:</div>
-                <div id="piedF"></div>
-              </div>
+              <?php
+              }
+              ?>
             </div>
 
             <div id="bio" class="celluleTab"><?php echo $player->getDescription()?></div>
@@ -62,6 +60,11 @@ $player=Player::getOne($_SESSION["sid"]);
 
 
 <?php
-// Form::createForm();
+echo "abracadabra";
+Form::createForm();
+
+echo "<a href=feature.php>edit</a>";
+
+}
 } 
 ?>

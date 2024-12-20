@@ -9,26 +9,6 @@ include_once("sessions.php");
 <h2>Mon formulaire de contact</h2>
       <form method="POST" action="functions/ffeedbackinsert.php">
       <div id="formulaire" class="tableau">
-        <!-- <div class="celluleTab">
-          <div class="cellule">prenom</div>
-          <input
-            type="text"
-            name="fbFirstName"
-            placeholder="toto"
-            required
-            class="inputForm"
-          />
-        </div>
-        <div class="celluleTab">
-          <div class="cellule">nom</div>
-          <input
-            type="text"
-            name="fbName"
-            placeholder="tutu"
-            required
-            class="inputForm"
-          />
-        </div> -->
         <div class="celluleTab">
           <div class="cellule">votre pays</div>
           <select required name="fbCountry" class="inputForm">
@@ -113,7 +93,7 @@ include_once("sessions.php");
     </tr>
   </thead>
   <tbody>
-  <?php foreach(Feedback::getAllFeedback($_SESSION["sid"]) as $ligne){?>
+  <?php foreach(User::getOne($_SESSION["sid"])->getFeedback($_SESSION["sid"]) as $ligne){?>
     <tr>
         <td><?php echo $ligne->getId(); ?></td>
         <td><?php echo $ligne->getDateTime(); ?></td>
@@ -121,6 +101,6 @@ include_once("sessions.php");
         <td><?php echo $ligne->getFeedback(); ?></td>
         <td><?php echo $ligne->getNote(); ?></td>
     </tr>
-    <?php }?>
+    <?php }; ?>
 </tbody>
 </table>

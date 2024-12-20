@@ -1,10 +1,14 @@
 <?php
-class Category{
+
+class Category
+{
     private $id;
     private $name;
     private $typeOf;
+    private $choices =[];
 
-    public function __construct($id,$name,$typeOf) {
+    public function __construct($id,$name,$typeOf) 
+    {
         $this->setId($id);
         $this->setName($name);
         $this->setTypeOf($typeOf);
@@ -29,16 +33,14 @@ class Category{
         $requete->execute();
     }
 
-    public static function getAll(){
-
-        /* utilise la fonction statique dans DB qui renvoie un objet PDO.
-        Cet objet PDO a une fonction "prepare" qui prend comme paramètre la requete SQL
-        */
+    public static function getAll()
+    {
         $requete = DB::getConnection()->prepare("select * from category");
-        $requete->execute();// execution de la requete
-        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
+        $requete->execute();
+        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC);
         $tabObjets = [];
-        foreach($tableau as $ligne){
+        foreach($tableau as $ligne)
+        {
             $tabObjets[] = new Category(
                 $ligne["id"],
                 $ligne["name"],
@@ -47,11 +49,18 @@ class Category{
         return $tabObjets;
     }
 
+    public function insert(){
+
+        $requete = DB::getConnection()->prepare("INSERT INTO category (name,type_of) VALUES (?,?)");
+        $requete->execute([$this->getName(),$this->getTypeOf()]);
+        $this->id = DB::getConnection()->lastInsertId();
+    }
+
     public static function getOne($id)
     {
         $requete = DB::getConnection()->prepare("select * from category where id = ?");
-        $requete->execute([$id]); // execution de la requete avec le paramètre à la place de ? dans le texte de la requête
-        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
+        $requete->execute([$id]); 
+        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC);
         $objet = new Category(
             $tableau[0]["id"],
             $tableau[0]["name"],
@@ -60,27 +69,42 @@ class Category{
         return $objet;
     }
 
+    public function getChoices($id){
+        $requete = DB::getConnection()->prepare("select id from choice where id_category = ?");
+        $requete->execute([$id]);
+        $results = $requete->fetchAll(PDO::FETCH_ASSOC);
+        foreach($results as $ligne){
+            $this->choices[]=Choice::getOne($ligne["id"]);
+        }
+        return $this->choices;
+    }
+
     public function getId(){
         return $this->id;
     }
 
-    public function setId($value){
+    public function setId($value)
+    {
         $this->id = $value;
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($value){
+    public function setName($value)
+    {
         $this->name = $value;
     }
 
-    public function getTypeOf(){
+    public function getTypeOf()
+    {
         return $this->typeOf;
     }
 
-    public function setTypeOf($value){
+    public function setTypeOf($value)
+    {
         $this->typeOf = $value;
     }
 

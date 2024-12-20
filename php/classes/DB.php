@@ -1,6 +1,7 @@
 <?php
 
-class DB{
+class DB
+{
     private static $db_name = 'kootlinf';
     private static $db_user = 'root';
     private static $db_password = 'root';
@@ -13,4 +14,5 @@ class DB{
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         return self::$pdo;
-    }}
+    }
+}

@@ -1,11 +1,14 @@
 <?php 
-class Choice {
+
+class Choice 
+{
     private $id;
     private $name;
     private $value;
     private $idCategory;
 
-    public function __construct($id,$name,$value,$idCategory) {
+    public function __construct($id,$name,$value,$idCategory) 
+    {
         $this->setId($id);
         $this->setName($name);
         $this->setValue($value);
@@ -33,11 +36,12 @@ class Choice {
         $requete->execute();
     }
 
-    public static function getAll(){
+    public static function getAll()
+    {
 
         $requete = DB::getConnection()->prepare("select * from choice order by id_category");
-        $requete->execute();// execution de la requete
-        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
+        $requete->execute();
+        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); 
         $tabObjets = [];
         foreach($tableau as $ligne){
             $tabObjets[] = new Choice(
@@ -49,21 +53,22 @@ class Choice {
         return $tabObjets;
     }
 
-    public static function getChoice($id){
+    // public static function getChoice($id)
+    // {
 
-        $requete = DB::getConnection()->prepare("select * from choice where id_category = ?");
-        $requete->execute([$id]);// execution de la requete
-        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
-        $tabObjets = [];
-        foreach($tableau as $ligne){
-            $tabObjets[] = new Choice(
-                $ligne["id"],
-                $ligne["name"],
-                $ligne["value"],
-                $ligne["id_category"]);
-        }
-        return $tabObjets;
-    }
+    //     $requete = DB::getConnection()->prepare("select * from choice where id_category = ?");
+    //     $requete->execute([$id]);// execution de la requete
+    //     $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
+    //     $tabObjets = [];
+    //     foreach($tableau as $ligne){
+    //         $tabObjets[] = new Choice(
+    //             $ligne["id"],
+    //             $ligne["name"],
+    //             $ligne["value"],
+    //             $ligne["id_category"]);
+    //     }
+    //     return $tabObjets;
+    // }
 
     public static function getOne($id)
     {
@@ -79,35 +84,43 @@ class Choice {
         return $objet;
     }
 
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function setId($value){
+    public function setId($value)
+    {
         $this->id = $value;
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($value){
+    public function setName($value)
+    {
         $this->name = $value;
     }
 
-    public function getValue(){
+    public function getValue()
+    {
         return $this->value;
     }
 
-    public function setValue($value){
+    public function setValue($value)
+    {
         $this->value = $value;
     }
 
-    public function getIdCategory(){
+    public function getIdCategory()
+    {
         return $this->idCategory;
     }
 
-    public function setIdCategory($value){
+    public function setIdCategory($value)
+    {
         $this->idCategory = $value;
     }
 }

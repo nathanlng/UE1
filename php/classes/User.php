@@ -1,15 +1,19 @@
 <?php
-class User {
+
+class User 
+{
     protected $id;
     protected $login;
     protected $password;
     protected $typeOf;
+    private $feedbacks = [];
 
     public function __construct($id,$login,$password,$typeOf) {
         $this->setId($id);
         $this->setLogin($login);
         $this->setPassword($password);
         $this->setTypeOf($typeOf);
+        $this->feedbacks = [];
     }
 
     public static function getAll(){
@@ -43,6 +47,16 @@ class User {
             $tableau[0]["type_of"]
         );
         return $objet;
+    }
+
+    public function getFeedback($id){
+        $requete = DB::getConnection()->prepare("select id from feedback where id_user = ?");
+        $requete->execute([$id]);
+        $results = $requete->fetchAll(PDO::FETCH_ASSOC);
+        foreach($results as $ligne){
+            $this->feedbacks[]=Feedback::getOne($ligne["id"]);
+        }
+        return $this->feedbacks;
     }
 
     public function getId(){

@@ -1,4 +1,6 @@
 <?php 
-class Recruiter extends User{
+
+class Recruiter extends User
+{
     
 }

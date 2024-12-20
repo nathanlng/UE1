@@ -1,5 +1,7 @@
 <?php
-class Player extends User{
+
+class Player extends User
+{
     private $name;
     private $firstName;
     private int $age;
@@ -7,7 +9,9 @@ class Player extends User{
     private $description;
     private $features =[];
 
-    public function __construct($name,$firstName,$age,$picture,$description) {
+    public function __construct($id,$name,$firstName,$age,$description=null,$picture = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png") {
+        $user=User::getOne($id);
+        parent::__construct($id,$user->login,$user->password,$user->typeOf);
         $this->setName($name);
         $this->setFirstName($firstName);
         $this->setAge($age);
@@ -26,8 +30,9 @@ class Player extends User{
         $tabObjets = [];
         foreach($tableau as $ligne){
             $tabObjets[] = new Player(
+                $ligne["id"],
                 $ligne["name"],
-                $ligne["firstName"],
+                $ligne["first_name"],
                 $ligne["age"],
                 $ligne["picture"],
                 $ligne["description"]);
@@ -41,20 +46,44 @@ class Player extends User{
         $requete->execute([$id]); // execution de la requete avec le paramètre à la place de ? dans le texte de la requête
         $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
         $objet = new Player(
+            $id,
             $tableau[0]["name"],
             $tableau[0]["first_name"],
             $tableau[0]["age"],
             $tableau[0]["picture"],
             $tableau[0]["description"]);
         ;  
-        $user=User::getOne($id);
-        $objet->id=$user->id;
-        $objet->login=$user->login;
-        $objet->password=$user->password;
-        $objet->typeOf=$user->typeOf;
         return $objet;
     }
+
+    public function getFeatures($id){
+        $requete = DB::getConnection()->prepare("select id from feature where id_player = ?");
+        $requete->execute([$id]);
+        $results = $requete->fetchAll(PDO::FETCH_ASSOC);
+        foreach($results as $ligne){
+            $this->features[]=Feature::getOne($ligne["id"]);
+        }
+        return $this->features;
+    }
     
+    public function update()
+    {
+        $requete = DB::getConnection()->prepare("
+            update player
+                set name=?,
+                 first_name=?,
+                 age=?,
+                 picture=?,
+                description=?
+                where id=?");
+        $requete->bindValue(1, $this->getName());
+        $requete->bindValue(2, $this->getFirstName());
+        $requete->bindValue(3, $this->getAge());
+        $requete->bindValue(4, $this->getPicture());
+        $requete->bindValue(5, $this->getDescription());
+        $requete->bindValue(6, $this->getId());
+        $requete->execute();
+    }
 
     public function addFeatures($feature){
         $this->features []= $feature;
@@ -108,9 +137,9 @@ class Player extends User{
         $this->description = $value;
     }
 
-    public function getFeatures(){
-        return $this->features;
-    }
+    // public function getFeatures(){
+    //     return $this->features;
+    // }
 
     // public function setFeatures($value){
     //     $this->features = $value;

@@ -9,15 +9,21 @@ echo $_SESSION["srole"];
 
 if (is_admin()) {
     if (!empty($_POST["nameCaract"]) && !empty($_POST["type"])) {
-        $nameCaract= $_POST["nameCaract"];
+        $name= $_POST["nameCaract"];
         $type = $_POST["type"];
-       $sql= "INSERT INTO category (name,type_of) VALUES ('$nameCaract','$type')";
-       try {
-        mysqli_query($db,$sql);
-        echo "<p> ajout reussi</p>";
-       } catch (Exception $e) {
-        echo "<p> un problème est survenu réesayer plus tard 1</p>";
-       }
+        $category = new Category(null,$name,$type);
+        $category->insert();
+        foreach (Player::getAll() as $player) {
+          $feature= new Feature(null,$category->getId(),null,$player->getId());
+          $feature->insert();
+        }
+      //  $sql= "INSERT INTO category (name,type_of) VALUES ('$nameCaract','$type')";
+      //  try {
+      //   mysqli_query($db,$sql);
+      //   echo "<p> ajout reussi</p>";
+      //  } catch (Exception $e) {
+      //   echo "<p> un problème est survenu réesayer plus tard 1</p>";
+      //  }
     }
 
     if (!empty($_POST["nameChoice"]) && !empty($_POST["idChoice"]) && !empty($_POST["valueChoice"])) {

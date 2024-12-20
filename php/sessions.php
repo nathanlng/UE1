@@ -21,11 +21,10 @@ function is_admin(){
 }
 
 function is_joueur(){
-    if(is_logged() && $_SESSION["srole"] == "joueur"){
+    if(is_logged() && $_SESSION["srole"] == "player"){
         return true;
     }
     else{
         return false;
     }
-
 }

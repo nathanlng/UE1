@@ -37,7 +37,7 @@
 
 <?php
 if (!empty($_POST["fbIdUser"])){
-    $result = Feedback::getAllFeedback($_POST["fbIdUser"]);
+    $result = User::getOne($_POST["fbIdUser"])->getFeedback($_POST["fbIdUser"]);
     ?>
     <table class="table table-hover">
   <thead>
@@ -49,7 +49,7 @@ if (!empty($_POST["fbIdUser"])){
   <?php foreach($result as $ligne){?>
     <tr>
         <td><?php echo $ligne->getId(); ?></td>
-        <td><?php echo $ligne->getIdUser(); ?></td>
+        <td><?php echo $ligne->getUser()->getLogin(); ?></td>
         <td><?php echo $ligne->getDateTime(); ?></td>
         <td><?php echo $ligne->getTitle(); ?></td>
         <td><?php echo $ligne->getFeedback(); ?></td>
