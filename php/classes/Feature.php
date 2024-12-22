@@ -27,11 +27,15 @@ class Feature
         $requete->execute();
     }
 
-    public static function delete($id)
+    public function delete()
     {
         $requete = DB::getConnection()->prepare("
-            delete from feature where id=?");
-        $requete->bindValue(1, $id);
+        update feature
+            set
+             value=?
+            where id=?");
+        $requete->bindValue(1, null);
+        $requete->bindValue(2, $this->getId());
         $requete->execute();
     }
 

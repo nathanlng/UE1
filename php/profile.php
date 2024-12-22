@@ -60,8 +60,8 @@ if (is_joueur()){
 
 
 <?php
-echo "abracadabra";
-Form::createForm();
+// echo "abracadabra";
+// Form::createForm();
 
 echo "<a href=feature.php>edit</a>";
 

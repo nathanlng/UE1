@@ -23,16 +23,21 @@ if (!empty($_POST["login"]) && !empty($_POST["password"]) && !empty($_POST["srol
         $id_user = mysqli_insert_id($db);
         echo "compte créé avec l'id $id_user";
         if ($typeOf == "player") {
-            $sql = "INSERT INTO player (id,name,first_name,age,picture,description) VALUES ('$id_user','','',0,'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png','')";
+            $sql = "INSERT INTO player (id,name,first_name,age,picture,description) VALUES ('$id_user',' ',' ',0,'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png','')";
             try{
                 mysqli_query($db,$sql);
-                $id_user = mysqli_insert_id($db);
                 echo "player créé avec l'id $id_user";
+                $player = Player::getOne($id_user);
+                foreach (Category::getAll() as $category) {
+                    $feature= new Feature(null,$category->getId(),null,$player->getId());
+                    $feature->insert();
+                  }
             }catch(Exception $e){
                 echo "erreur création";
                 echo"<br/> sql = ".$sql;
             }
         }
+        header("location: login.php");
     }catch(Exception $e){
         echo "erreur création";
         echo"<br/> sql = ".$sql;

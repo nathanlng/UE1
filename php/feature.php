@@ -1,6 +1,8 @@
 <?php
     require_once "autoload.php";
+    include ("includes/header.php");
     include_once("sessions.php");
+
 ?>
 <h3>Caractéristiques</h3>
 <table class="table table-hover">

@@ -9,7 +9,7 @@
           <li><a href="/php/acceuil.html">Home</a></li>
           <li><a href="/php/pageLink.html">Link</a></li>
           <li><a href="/php/contact.php">Contact</a></li>
-          <li><a href="/php/login.php">login</a></li>
+          <li><a href="/php/link.php">link</a></li>
           <li><a href="/php/profile.php">Profile</a></li>
           <?php 
           include ("sessions.php");
