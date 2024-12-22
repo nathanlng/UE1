@@ -14,7 +14,7 @@ if (is_admin()) {
         $category = new Category(null,$name,$type);
         $category->insert();
         foreach (Player::getAll() as $player) {
-          $feature= new Feature(null,$category->getId(),null,$player->getId());
+          $feature= new Feature(null,$category->getId(),null,$player->getId(),1);
           $feature->insert();
         }
       //  $sql= "INSERT INTO category (name,type_of) VALUES ('$nameCaract','$type')";

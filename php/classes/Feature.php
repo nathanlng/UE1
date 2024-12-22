@@ -6,13 +6,27 @@ class Feature
     private $idCategory;
     private $idPlayer;
     private $value;
+    private $display;
 
-    public function __construct($id,$idCategory,$value,$idPlayer) 
+    public function __construct($id,$idCategory,$value,$idPlayer,$display) 
     {
         $this->setId($id);
         $this->setValue($value);
         $this->setIdCategory($idCategory);
         $this->setIdPlayer($idPlayer);
+        $this->setDisplay($display);
+    }
+
+    public function display()
+    {
+        $requete = DB::getConnection()->prepare("
+            update feature
+                set
+                 display=?
+                where id=?");
+        $requete->bindValue(1, $this->getDisplay());
+        $requete->bindValue(2, $this->getId());
+        $requete->execute();
     }
 
     public function update()
@@ -41,9 +55,9 @@ class Feature
 
     public function insert()
     {
-        $requete = DB::getConnection()->prepare("insert into feature (id_category,id_player,value) values(?,?,?)");
+        $requete = DB::getConnection()->prepare("insert into feature (id_category,id_player,value,display) values(?,?,?,?)");
         // $requete->blindValue(1,);
-        $requete->execute([$this->getIdCategory(),$this->getIdPlayer(),$this->getValue()]);
+        $requete->execute([$this->getIdCategory(),$this->getIdPlayer(),$this->getValue(),$this->getDisplay()]);
         $this->id = DB::getConnection()->lastInsertId();
     }
 
@@ -56,7 +70,8 @@ class Feature
             $tableau[0]["id"],
             $tableau[0]["id_category"],
             $tableau[0]["value"],
-            $tableau[0]["id_player"]);
+            $tableau[0]["id_player"],
+            $tableau[0]["display"]);
         ;  
         return $objet;
     }
@@ -71,7 +86,8 @@ class Feature
                 $tableau[0]["id"],
                 $tableau[0]["id_category"],
                 $tableau[0]["value"],
-                $tableau[0]["id_player"]);
+                $tableau[0]["id_player"],
+                $tableau[0]["display"]);
             ;  
             return $objet;
         }
@@ -138,5 +154,16 @@ class Feature
     public function setIdCategory($value)
     {
         $this->idCategory = $value;
+    }
+
+    public function getDisplay()
+    {
+        return $this->display;
+    }
+
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+        return $this;
     }
 }

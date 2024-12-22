@@ -33,7 +33,7 @@ if (is_joueur()){
                 <div id="age"><?php echo $player->getAge()?></div>
               </div>
               <?php
-              foreach ($player->getFeatures($player->getId()) as $feature) {
+              foreach ($player->getFeatures() as $feature) {
                 $category = Category::getOne($feature->getIdCategory());
                 ?>
                 <div class="celluleTab">

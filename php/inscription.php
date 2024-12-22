@@ -29,7 +29,7 @@ if (!empty($_POST["login"]) && !empty($_POST["password"]) && !empty($_POST["srol
                 echo "player créé avec l'id $id_user";
                 $player = Player::getOne($id_user);
                 foreach (Category::getAll() as $category) {
-                    $feature= new Feature(null,$category->getId(),null,$player->getId());
+                    $feature= new Feature(null,$category->getId(),null,$player->getId(),1);
                     $feature->insert();
                   }
             }catch(Exception $e){

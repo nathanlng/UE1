@@ -56,9 +56,9 @@ class Player extends User
         return $objet;
     }
 
-    public function getFeatures($id){
+    public function getFeatures(){
         $requete = DB::getConnection()->prepare("select id from feature where id_player = ?");
-        $requete->execute([$id]);
+        $requete->execute([$this->getId()]);
         $results = $requete->fetchAll(PDO::FETCH_ASSOC);
         foreach($results as $ligne){
             $this->features[]=Feature::getOne($ligne["id"]);

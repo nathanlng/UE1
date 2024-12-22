@@ -40,6 +40,7 @@ $category= Category::getOne($feature->getIdCategory())
     }
     ?>
     <input type="hidden" name="category" value="<?php echo (Category::getOne($feature->getIdCategory())->getId()); ?>">
+    <input type="hidden" name="display" value="<?php echo ($feature->getDisplay()); ?>">
     <input type="submit" value="OK">
 </form>
 
