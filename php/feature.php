@@ -3,14 +3,41 @@
     include ("includes/header.php");
     include_once("sessions.php");
 
+    $player = Player::getOne($_SESSION["sid"]);
 ?>
+<table class="table table-hover">
+  <tr>
+    <td>prenom</td>
+    <td><?php echo $player->getFirstName();?></td>
+  </tr>
+  <tr>
+    <td>nom</td>
+    <td><?php echo $player->getName();?></td>
+  </tr>
+  <tr>
+    <td>age</td>
+    <td><?php echo $player->getAge();?></td>
+  </tr>
+  <tr>
+    <td>picture</td>
+    <td><?php echo $player->getPicture();?></td>
+  </tr>
+  <tr>
+    <td>description</td>
+    <td><?php echo $player->getDescription();?></td>
+  </tr>
+  <tr>
+      <a href="playerUpdate.php">Modifier</a>
+    </tr>
+</table>
+
   <form action="functions/ffeaturedisplay.php" method="post">
 <h3>Caractéristiques</h3>
 <table class="table table-hover">
   <tbody>
 
+
   <?php 
-  $player = Player::getOne($_SESSION["sid"]);
   foreach($player->getFeatures() as $feature){
     $category= Category::getOne($feature->getIdCategory())
     ?>
@@ -31,10 +58,12 @@
         <a href="functions/ffeaturedelete.php?id=<?php echo ($feature->getId()); ?>">Supprimer</a>
         </td>
         <td>
-            <input type="checkbox" name="check<?php echo $feature->getId().'" ';
+            <input type="checkbox" name="check<?php echo $feature->getId().'"';
             if ($feature->getDisplay()==1) {
               echo "checked";
-            }?>/>
+            }
+            echo "/>";
+            ?>
         </td>
     </tr>
     <?php }?>

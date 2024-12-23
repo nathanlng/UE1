@@ -10,12 +10,13 @@ include_once("sessions.php");
 if (is_logged()) {
 message_login();
 echo "<a href='login.php?deco=1'>Déconnexion</a>";
-$player=Player::getOne($_SESSION["sid"]);
+
+
+
 // var_dump(Player::getOne($_SESSION["sid"])) ;
 // var_dump($player->getFeatures($player->getId()));
-if (is_joueur()){
-
-
+if (is_player()){
+  $player=Player::getOne($_SESSION["sid"]);
 ?>
 
 <h2>Mon profil</h2>
@@ -34,7 +35,8 @@ if (is_joueur()){
               </div>
               <?php
               foreach ($player->getFeatures() as $feature) {
-                $category = Category::getOne($feature->getIdCategory());
+                if ($feature->getDisplay()==1) {
+                  $category = Category::getOne($feature->getIdCategory());
                 ?>
                 <div class="celluleTab">
                 <div class="cellule"> <?php echo "<br />".$category->getName()?>:</div>
@@ -45,9 +47,11 @@ if (is_joueur()){
                 } else {
                   echo $feature->getValue();
                 }
-                 ?></div>
+                 ?>
+                 </div>
               </div>
               <?php
+                }
               }
               ?>
             </div>
@@ -66,5 +70,7 @@ if (is_joueur()){
 echo "<a href=feature.php>edit</a>";
 
 }
-} 
+} else {
+  echo "<a href='login.php'>se connecter</a>";
+}
 ?>

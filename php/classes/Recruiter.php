@@ -13,6 +13,22 @@ class Recruiter extends User
         $this->setFirstName($firstName);
     }
 
+    public static function getOne($id)
+    {
+        $requete = DB::getConnection()->prepare("select * from recruiter where id = ?");
+        $requete->execute([$id]); // execution de la requete avec le paramètre à la place de ? dans le texte de la requête
+        $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
+        $objet = new Player(
+            $id,
+            $tableau[0]["name"],
+            $tableau[0]["first_name"],
+            $tableau[0]["age"],
+            $tableau[0]["description"],
+            $tableau[0]["picture"]);
+        ;  
+        return $objet;
+    }
+
     public function getName()
     {
         return $this->name;

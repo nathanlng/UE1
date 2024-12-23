@@ -34,8 +34,9 @@ class Player extends User
                 $ligne["name"],
                 $ligne["first_name"],
                 $ligne["age"],
-                $ligne["picture"],
-                $ligne["description"]);
+                $ligne["description"],
+                $ligne["picture"]);
+
         }
         return $tabObjets;
     }
@@ -50,8 +51,8 @@ class Player extends User
             $tableau[0]["name"],
             $tableau[0]["first_name"],
             $tableau[0]["age"],
-            $tableau[0]["picture"],
-            $tableau[0]["description"]);
+            $tableau[0]["description"],
+            $tableau[0]["picture"]);
         ;  
         return $objet;
     }

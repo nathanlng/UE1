@@ -32,12 +32,25 @@ if (!empty($_POST["login"]) && !empty($_POST["password"]) && !empty($_POST["srol
                     $feature= new Feature(null,$category->getId(),null,$player->getId(),1);
                     $feature->insert();
                   }
+                  header("location: login.php");
             }catch(Exception $e){
                 echo "erreur création";
                 echo"<br/> sql = ".$sql;
             }
         }
-        header("location: login.php");
+        else
+        {
+            $sql = "INSERT INTO recruiter (id,name,first_name,licence) VALUES ('$id_user',' ',' ',null)";
+            try{
+                mysqli_query($db,$sql);
+                echo "recruteur créé avec l'id $id_user";
+            }catch(Exception $e){
+                echo "erreur création";
+                echo"<br/> sql = ".$sql;
+            }
+            
+        }
+        
     }catch(Exception $e){
         echo "erreur création";
         echo"<br/> sql = ".$sql;
