@@ -4,21 +4,32 @@
     include_once("sessions.php");
     ?>
 
+<div id="container">
+<?php
 
-    <?php
-
-    foreach (Player::getAll() as $player) {
-        echo $player->getPicture();
-        ?>
-        <div class="card" style="width: 18rem;">
-  <img src="<?php echo $player->getPicture(); ?>" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $player->getName().$player->getId() ?></h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+foreach (Player::getAll() as $player) {
+    ?>
+    <div class="playerCard">
+        <img src="<?php echo $player->getPicture(); ?>" alt="" class="playerImg">
+        <div class="username"><?php echo $player->getFirstName()." ".$player->getName(); ?></div>
         
-        <?php
-    }
+        <div class="features">
+            
+            <div><?php echo $player->getAge() ?></div>
+            <?php
+            foreach ($player->getFeatures() as $feature) {
+                if ($feature->getValue() != null or $feature->getValue() != "") {
+                    echo "<div class='feature'>".$feature->getValue()."</div>";
+                }
+            }
+            ?>
+        </div>
+        <a href="playerProfile.php?id=<?php echo $player->getId()?>"> go to profile </a>
+    </div>
+    
+    <?php
+}
 ?>
+</div>
+
+   

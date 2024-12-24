@@ -23,8 +23,8 @@ if (is_player()){
       <div id="profile">
         <div id="profileContainer" class="tableau">
           <div id="banniere">
-            <div id="photoContainer"><?php echo $player->getPicture()?></div>
-            <div id="username"><p id="userN"><?php echo $player->getFirstName()." ".$player->getName()?></p></div>
+            <img src="<?php echo $player->getPicture()?>" id="profileImg" alt="">
+            <div class="username"><?php echo $player->getFirstName()." ".$player->getName()?></div>
           </div>
           <div></div>
           <div id="caracteristiqueProfile">
@@ -55,11 +55,9 @@ if (is_player()){
               }
               ?>
             </div>
-
             <div id="bio" class="celluleTab"><?php echo $player->getDescription()?></div>
           </div>
         </div>
-        <button id="editButton" class="buttonStyle">edit profile</button>
       </div>
 
 

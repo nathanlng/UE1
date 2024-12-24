@@ -58,7 +58,8 @@
         <a href="functions/ffeaturedelete.php?id=<?php echo ($feature->getId()); ?>">Supprimer</a>
         </td>
         <td>
-            <input type="checkbox" name="check<?php echo $feature->getId().'"';
+            <input type="checkbox" name="check<?php echo $feature->getId()?>";
+            <?php
             if ($feature->getDisplay()==1) {
               echo "checked";
             }
