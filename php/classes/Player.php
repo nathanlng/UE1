@@ -7,9 +7,11 @@ class Player extends User
     private int $age;
     private $picture;
     private $description;
+    private $display;
     private $features =[];
 
-    public function __construct($id,$name,$firstName,$age,$description=null,$picture = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png") {
+
+    public function __construct($id,$name,$firstName,$age,$description=null,$display,$picture = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png") {
         $user=User::getOne($id);
         parent::__construct($id,$user->login,$user->password,$user->typeOf);
         $this->setName($name);
@@ -17,6 +19,7 @@ class Player extends User
         $this->setAge($age);
         $this->setPicture($picture);
         $this->setDescription($description);
+        $this->setDisplay($display);
     }
 
     public static function getAll(){
@@ -35,6 +38,7 @@ class Player extends User
                 $ligne["first_name"],
                 $ligne["age"],
                 $ligne["description"],
+                $ligne["display"],
                 $ligne["picture"]);
 
         }
@@ -52,6 +56,7 @@ class Player extends User
             $tableau[0]["first_name"],
             $tableau[0]["age"],
             $tableau[0]["description"],
+            $tableau[0]["display"],
             $tableau[0]["picture"]);
         ;  
         return $objet;
@@ -75,14 +80,16 @@ class Player extends User
                  first_name=?,
                  age=?,
                  picture=?,
-                description=?
+                description=?,
+                display=?
                 where id=?");
         $requete->bindValue(1, $this->getName());
         $requete->bindValue(2, $this->getFirstName());
         $requete->bindValue(3, $this->getAge());
         $requete->bindValue(4, $this->getPicture());
         $requete->bindValue(5, $this->getDescription());
-        $requete->bindValue(6, $this->getId());
+        $requete->bindValue(6, $this->getDisplay());
+        $requete->bindValue(7, $this->getId());
         $requete->execute();
     }
 
@@ -138,11 +145,14 @@ class Player extends User
         $this->description = $value;
     }
 
-    // public function getFeatures(){
-    //     return $this->features;
-    // }
+    public function getDisplay()
+    {
+        return $this->display;
+    }
 
-    // public function setFeatures($value){
-    //     $this->features = $value;
-    // }
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+        return $this;
+    }
 }

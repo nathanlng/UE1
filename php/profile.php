@@ -20,45 +20,40 @@ if (is_player()){
 ?>
 
 <h2>Mon profil</h2>
-      <div id="profile">
-        <div id="profileContainer" class="tableau">
+<div id="profileContainer" class="tableau">
           <div id="banniere">
-            <img src="<?php echo $player->getPicture()?>" id="profileImg" alt="">
-            <div class="username"><?php echo $player->getFirstName()." ".$player->getName()?></div>
+            <div id="photoContainer"></div>
+            <div id="username"><?php echo $player->getFirstName()." ".$player->getName() ?></div>
           </div>
-          <div></div>
           <div id="caracteristiqueProfile">
             <div id="infoProfile">
-              <div class="celluleTab">
                 <div class="cellule">age:</div>
-                <div id="age"><?php echo $player->getAge()?></div>
-              </div>
+                <div id="age" class="cellule"><?php echo $player->getAge()?></div>
               <?php
+              
               foreach ($player->getFeatures() as $feature) {
                 if ($feature->getDisplay()==1) {
                   $category = Category::getOne($feature->getIdCategory());
                 ?>
-                <div class="celluleTab">
-                <div class="cellule"> <?php echo "<br />".$category->getName()?>:</div>
-                <div id="<?php echo $category->getName()?>">
+                <div class="cellule"> <?php echo $category->getName()?>:</div>
+                <div class="cellule" id="<?php echo $category->getName()?>">
                   <?php
                   if ($category->getTypeOf()== "select") {
-                  echo $feature->getChoice();
+                  echo $feature->getChoice()."</div>";
                 } else {
-                  echo $feature->getValue();
+                  echo $feature->getValue()."</div>";
                 }
+            }
+        }
+    
                  ?>
-                 </div>
-              </div>
-              <?php
-                }
-              }
-              ?>
-            </div>
-            <div id="bio" class="celluleTab"><?php echo $player->getDescription()?></div>
+            
+
+           
           </div>
-        </div>
-      </div>
+          <div id="bio"><?php echo $player->getDescription(); ?></div>
+</div>
+          </div>
 
 
 <?php

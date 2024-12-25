@@ -24,6 +24,7 @@ class Recruiter extends User
             $tableau[0]["first_name"],
             $tableau[0]["age"],
             $tableau[0]["description"],
+            $tableau[0]["display"],
             $tableau[0]["picture"]);
         ;  
         return $objet;

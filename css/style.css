@@ -9,8 +9,8 @@
   flex-direction: column;
 }
 
-#navbar{
-    background-color: #98c482 !important;
+#navbar {
+  background-color: #98c482 !important;
 }
 
 .container {
@@ -31,128 +31,125 @@
 }
 
 .playerImg {
- margin-top: 10px;
+  margin-top: 10px;
   width: 80%;
   height: 40%;
 }
 
-.features{
-    display: flex;
-    flex-wrap: wrap;
+.features {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.feature{
-    margin-left: 10px;
+.feature {
+  margin-left: 10px;
 }
 
-#ProfileImg{
-    border: 5px solid #c4d9ba;
-    height: 200px;
-    width: 200px;
-    border-radius: 15px;
+#ProfileImg {
+  border: 5px solid #c4d9ba;
+  height: 200px;
+  width: 200px;
+  border-radius: 15px;
 }
 
-#profile{
-    width: 80vw;
-    height: auto;
-    border: 2px solid #98c482;
-    border-radius: 15px;
-    background-color: #c4d9ba;
+#profile {
+  width: 80vw;
+  height: auto;
+  border: 2px solid #98c482;
+  border-radius: 15px;
+  background-color: #c4d9ba;
 }
 
+#caracteristiqueProfile {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-top: 2px solid #98c482;
+}
 
+#infoProfile {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  #caracteristiqueProfile {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    border-top: 2px solid #98c482;
-  }
+#bio {
+  margin-top: 10px;
+  width: 40%;
+}
 
-  #infoProfile {
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-  }
+#photoContainer {
+  border: 5px solid #c4d9ba;
+}
 
-  #bio {
-    margin-top: 10px;
-    width: 40%;
-  }
+.cellule {
+  width: 100px;
+  height: auto;
+}
 
-  #photoContainer {
-    border: 5px solid #c4d9ba;
-  }
+#banniere {
+  display: flex;
+  width: 100%;
+  height: 10vw;
+  margin-bottom: 9%;
+  background-image: url(https://images.unsplash.com/photo-1632300951015-42d7df909581?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-position: 10% 70%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  .cellule {
-    width: 100px;
-    height: auto;
-  }
-  
-  #banniere {
-    display: flex;
-    width: 100%;
-    height: 10vw;
-    margin-bottom: 9%;
-    background-image: url(https://images.unsplash.com/photo-1632300951015-42d7df909581?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    background-position: 10% 70%;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .tableau {
-    border: 3px solid #98c482;
-    background-color: #c4d9ba;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    padding: 20px;
-    width: 70vw;
-    height: auto;
-    max-width: 1200px;
-    margin-top: 50px;
-  }
+.tableau {
+  border: 3px solid #98c482;
+  background-color: #c4d9ba;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 20px;
+  width: 70vw;
+  height: auto;
+  max-width: 1200px;
+  margin-top: 50px;
+}
 
-  #photoContainer {
-    width: 10vw;
-    height: 10vw;
-    /* max-width: 150px;
+#photoContainer {
+  width: 10vw;
+  height: 10vw;
+  /* max-width: 150px;
     max-height: 150px; */
-    border-radius: 100%;
-    background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
-  
-    background-size: cover;
+  border-radius: 100%;
+  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
+
+  background-size: cover;
+  position: relative;
+  top: 40%;
+  left: 5%;
+  z-index: 1;
+}
+
+#profileContainer {
+  justify-self: center;
+  padding: 20px;
+  border: 3px solid #98c482;
+  background-color: #c4d9ba;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 20px;
+  width: 70vw;
+  height: auto;
+}
+
+@media (min-width: 701px) {
+  #username {
+    font-size: 150%;
+    font-weight: bold;
+    display: flex;
+    margin: 10px;
     position: relative;
-    top: 40%;
     left: 5%;
-    z-index: 1;
+    top: 100%;
   }
-  
-  #profileContainer {
-    justify-self: center;
-    padding: 20px;
-    border: 3px solid #98c482;
-    background-color: #c4d9ba;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    padding: 20px;
-    width: 70vw;
-    height: auto;
-  }
+}
 
-  @media (min-width: 701px) {
-    #username {
-        font-size: 150%;
-        font-weight: bold;
-        display: flex;
-        margin: 10px;
-        position: relative;
-        left: 5%;
-        top: 100%;
-      }
-  }
-
-  @media (max-width: 700px) {
-
+@media (max-width: 700px) {
   #username {
     font-size: 100%;
     font-weight: bold;
@@ -184,6 +181,6 @@
 }
 
 .cellule {
-    width: 48%;
-    height: auto;
-  }
+  width: 48%;
+  height: auto;
+}

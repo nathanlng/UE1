@@ -2,8 +2,8 @@
     require_once "autoload.php";
     include ("includes/header.php");
     include_once("sessions.php");
-    if (is_player()){
-        $player=Player::getOne($_SESSION["sid"]);
+    if (is_logged()){
+        $player=Player::getOne($_GET["id"]);
     ?>
 
 <div id="profileContainer" class="tableau">
@@ -13,6 +13,8 @@
           </div>
           <div id="caracteristiqueProfile">
             <div id="infoProfile">
+                <div class="cellule">age:</div>
+                <div id="age" class="cellule"><?php echo $player->getAge()?></div>
               <?php
               
               foreach ($player->getFeatures() as $feature) {
@@ -29,11 +31,17 @@
                 }
             }
         }
-    }
+    
                  ?>
             
 
            
           </div>
-          <div id="bio"></div>
+          <div id="bio"><?php echo $player->getDescription(); ?></div>
 </div>
+          </div>
+          <a href="chat.php">discuter</a>
+<?php
+    }
+
+?>
