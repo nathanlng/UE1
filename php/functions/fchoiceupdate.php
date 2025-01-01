@@ -1,8 +1,8 @@
 <?php
 require_once("../autoload.php");
 
-$systeme = new Choice($_POST["id"], $_POST["name"],$_POST["value"],$_POST["idCategory"]);
+$object = new Choice($_POST["id"], $_POST["name"],$_POST["value"],$_POST["idCategory"]);
 
-$systeme->update();
+$object->update();
 
 header("location: ../category.php");

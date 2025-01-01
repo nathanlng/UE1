@@ -36,7 +36,8 @@
 </form>
 
 <?php
-if (!empty($_POST["fbIdUser"])){
+if (!empty($_POST["fbIdUser"]))
+{
     $result = User::getOne($_POST["fbIdUser"])->getFeedback($_POST["fbIdUser"]);
     ?>
     <table class="table table-hover">

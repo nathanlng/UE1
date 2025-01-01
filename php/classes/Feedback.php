@@ -2,6 +2,7 @@
 
 class Feedback 
 {
+
     private $id;
     private $idUser;
     private $title;
@@ -11,6 +12,7 @@ class Feedback
     private $mail;
     private $country;
     private $city;
+
 
     public function __construct($id,$idUser,$title,$dateTime,$note,$feedback,$mail,$country,$city) 
     {
@@ -25,7 +27,8 @@ class Feedback
         $this->setCity($city);
     }
 
-    public function insert(){
+    public function insert()
+    {
 
         $requete = DB::getConnection()->prepare("insert into feedback (id_user,title,date_time,note,feedback,mail,country,city) values(?,?,?,?,?,?,?,?)");
         $requete->execute([$this->getIdUser(),$this->getTitle(),$this->getDateTime(),$this->getNote(),$this->getFeedback(),$this->getMail(),$this->getCountry(),$this->getCity()]);
@@ -46,8 +49,10 @@ class Feedback
         $requete->execute();
         $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); 
         $tabObjets = [];
-        foreach($tableau as $ligne){
-            $tabObjets[] = new Feedback(
+        foreach($tableau as $ligne)
+        {
+            $tabObjets[] = new Feedback
+            (
                 $ligne["id"],
                 $ligne["id_user"],
                 $ligne["title"],
@@ -56,7 +61,8 @@ class Feedback
                 $ligne["feedback"],
                 $ligne["mail"],
                 $ligne["country"],
-                $ligne["city"],);
+                $ligne["city"]
+            );
         }
         return $tabObjets;
     }
@@ -67,7 +73,8 @@ class Feedback
         $requete = DB::getConnection()->prepare("select * from feedback where id = ?");
         $requete->execute([$id]);
         $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); 
-        $objet = new Feedback(
+        $objet = new Feedback
+        (
             $tableau[0]["id"],
             $tableau[0]["id_user"],
             $tableau[0]["title"],
@@ -76,8 +83,8 @@ class Feedback
             $tableau[0]["feedback"],
             $tableau[0]["mail"],
             $tableau[0]["country"],
-            $tableau[0]["city"],);
-        ;  
+            $tableau[0]["city"]
+        );  
         return $objet;
     }
 
@@ -175,5 +182,4 @@ class Feedback
     {
         $this->city = $value;
     }
-
 }

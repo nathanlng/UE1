@@ -11,7 +11,7 @@ if (!empty($_POST["first_name"]) && !empty($_POST["name"]))
     foreach (Category::getAll() as $ligne) 
     {
         $temp = $ligne->getName();
-        $feature= new Feature(null,$ligne->getId(),$_POST["$temp"],$_SESSION["sid"],);
+        $feature= new Feature(null,$ligne->getId(),$_POST["$temp"],$_SESSION["sid"]);
         $feature->insert();
     }
 }

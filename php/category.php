@@ -7,38 +7,38 @@
 
 echo $_SESSION["srole"];
 
-if (is_admin()) {
-    if (!empty($_POST["nameCaract"]) && !empty($_POST["type"])) {
-        $name= $_POST["nameCaract"];
-        $type = $_POST["type"];
-        $category = new Category(null,$name,$type);
-        $category->insert();
-        foreach (Player::getAll() as $player) {
-          $feature= new Feature(null,$category->getId(),null,$player->getId(),1);
-          $feature->insert();
-        }
-      //  $sql= "INSERT INTO category (name,type_of) VALUES ('$nameCaract','$type')";
-      //  try {
-      //   mysqli_query($db,$sql);
-      //   echo "<p> ajout reussi</p>";
-      //  } catch (Exception $e) {
-      //   echo "<p> un problème est survenu réesayer plus tard 1</p>";
-      //  }
-    }
+if (is_admin()) 
+{
+  if (!empty($_POST["nameCaract"]) && !empty($_POST["type"])) 
+  {
+      $name= $_POST["nameCaract"];
+      $type = $_POST["type"];
+      $category = new Category(null,$name,$type);
+      $category->insert();
+      foreach (Player::getAll() as $player) 
+      {
+        $feature= new Feature(null,$category->getId(),null,$player->getId(),1);
+        $feature->insert();
+      }
+  }
 
-    if (!empty($_POST["nameChoice"]) && !empty($_POST["idChoice"]) && !empty($_POST["valueChoice"])) {
-        $nameChoice= $_POST["nameChoice"];
-        $idChoice = $_POST["idChoice"];
-        $value = $_POST["valueChoice"];
-       $sql= "INSERT INTO choice (id_category,name,value) VALUES ('$idChoice','$nameChoice','$value')";
-       try {
-        mysqli_query($db,$sql);
-        echo "<p> ajout reussi</p>";
-       } catch (Exception $e) {
-        echo "<p> un problème est survenu réesayer plus tard 2</p>";
-       }
+  if (!empty($_POST["nameChoice"]) && !empty($_POST["idChoice"]) && !empty($_POST["valueChoice"])) 
+  {
+    $nameChoice= $_POST["nameChoice"];
+    $idChoice = $_POST["idChoice"];
+    $value = $_POST["valueChoice"];
+    $sql= "INSERT INTO choice (id_category,name,value) VALUES ('$idChoice','$nameChoice','$value')";
+    try 
+    {
+      mysqli_query($db,$sql);
+      echo "<p> ajout reussi</p>";
+    } 
+    catch (Exception $e) 
+    {
+      echo "<p> un problème est survenu réesayer plus tard 2</p>";
     }
-    ?>
+  }
+  ?>
 
     <form method='post'>
     <label>nouvelle caractéristique</label><br/>
@@ -55,13 +55,8 @@ if (is_admin()) {
 }
 ?>
 
-
-    <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">caracteristiques</th>
-    </tr>
-  </thead>
+  <label>caracteristiques</label>
+  <table class="table table-hover">
   <tbody>
   <?php foreach(Category::getAll() as $ligne){?>
     <tr>
@@ -91,7 +86,8 @@ if (is_admin()) {
     $sql= "SELECT name,id FROM category WHERE type_of LIKE '%select%'";
     $result= mysqli_query($db,$sql);
     $data = mysqli_fetch_all($result) ;
-    foreach ($data as $caract) {
+    foreach ($data as $caract) 
+    {
         echo "<option value='".$caract[1]."'>".$caract[0]."</option>";
     }
    echo  "</select>
@@ -100,11 +96,7 @@ if (is_admin()) {
     ?>
 
 <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">choix</th>
-    </tr>
-  </thead>
+<label>choix</label>
   <tbody>
   <?php foreach(Choice::getAll() as $ligne){?>
     <tr>

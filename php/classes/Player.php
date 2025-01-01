@@ -2,6 +2,7 @@
 
 class Player extends User
 {
+    
     private $name;
     private $firstName;
     private int $age;
@@ -11,7 +12,8 @@ class Player extends User
     private $features =[];
 
 
-    public function __construct($id,$name,$firstName,$age,$description=null,$display,$picture = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png") {
+    public function __construct($id,$name,$firstName,$age,$description=null,$display,$picture = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png") 
+    {
         $user=User::getOne($id);
         parent::__construct($id,$user->login,$user->password,$user->typeOf);
         $this->setName($name);
@@ -22,7 +24,8 @@ class Player extends User
         $this->setDisplay($display);
     }
 
-    public static function getAll(){
+    public static function getAll()
+    {
 
         /* utilise la fonction statique dans DB qui renvoie un objet PDO.
         Cet objet PDO a une fonction "prepare" qui prend comme paramètre la requete SQL
@@ -31,16 +34,18 @@ class Player extends User
         $requete->execute();// execution de la requete
         $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
         $tabObjets = [];
-        foreach($tableau as $ligne){
-            $tabObjets[] = new Player(
+        foreach($tableau as $ligne)
+        {
+            $tabObjets[] = new Player
+            (
                 $ligne["id"],
                 $ligne["name"],
                 $ligne["first_name"],
                 $ligne["age"],
                 $ligne["description"],
                 $ligne["display"],
-                $ligne["picture"]);
-
+                $ligne["picture"]
+            );
         }
         return $tabObjets;
     }
@@ -62,11 +67,13 @@ class Player extends User
         return $objet;
     }
 
-    public function getFeatures(){
+    public function getFeatures()
+    {
         $requete = DB::getConnection()->prepare("select id from feature where id_player = ?");
         $requete->execute([$this->getId()]);
         $results = $requete->fetchAll(PDO::FETCH_ASSOC);
-        foreach($results as $ligne){
+        foreach($results as $ligne)
+        {
             $this->features[]=Feature::getOne($ligne["id"]);
         }
         return $this->features;
@@ -93,55 +100,68 @@ class Player extends User
         $requete->execute();
     }
 
-    public function addFeatures($feature){
+    public function addFeatures($feature)
+    {
         $this->features []= $feature;
     }
 
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function setId($value){
+    public function setId($value)
+    {
         $this->id = $value;
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($value){
+    public function setName($value)
+    {
         $this->name = $value;
     }
 
-    public function getFirstName(){
+    public function getFirstName()
+    {
         return $this->firstName;
     }
 
-    public function setFirstName($value){
+    public function setFirstName($value)
+    {
         $this->firstName = $value;
     }
 
-    public function getAge(){
+    public function getAge()
+    {
         return $this->age;
     }
 
-    public function setAge($value){
+    public function setAge($value)
+    {
         $this->age = $value;
     }
 
-    public function getPicture(){
+    public function getPicture()
+    {
         return $this->picture;
     }
 
-    public function setPicture($value){
+    public function setPicture($value)
+    {
         $this->picture = $value;
     }
 
-    public function getDescription(){
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function setDescription($value){
+    public function setDescription($value)
+    {
         $this->description = $value;
     }
 

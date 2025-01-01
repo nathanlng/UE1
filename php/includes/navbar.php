@@ -18,6 +18,12 @@ require_once("sessions.php");
           <a class="nav-link" href="/php/link.php">Link</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/php/contact.php">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/php/chatRoom.php">Chat</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/php/profile.php">Profile</a>
         </li>
         <?php

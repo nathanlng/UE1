@@ -31,7 +31,8 @@ $category= Category::getOne($feature->getIdCategory())
             foreach ($category->getChoices($category->getId()) as $choice)
             {
                 echo "<option value='".$choice->getValue()."'";
-                 if ($choice->getValue()== $feature->getValue()) {
+                if ($choice->getValue()== $feature->getValue()) 
+                {
                     echo "selected";
                 }
                 echo ">".$choice->getName()."</option>";

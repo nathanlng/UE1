@@ -12,28 +12,35 @@ inscription_form();
 echo "<a  href='/php/login.php'>se connecter</a>";
 
 // creer utilisateur avec info formulaire
-if (!empty($_POST["login"]) && !empty($_POST["password"]) && !empty($_POST["srole"])) {
+if (!empty($_POST["login"]) && !empty($_POST["password"]) && !empty($_POST["srole"])) 
+{
     $login = $_POST["login"];
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $typeOf= $_POST["srole"];
     $sql = "INSERT INTO user (login,password,type_of) VALUES ('$login','$password','$typeOf')";
 
-    try{
+    try
+    {
         mysqli_query($db,$sql);
         $id_user = mysqli_insert_id($db);
         echo "compte créé avec l'id $id_user";
-        if ($typeOf == "player") {
+        if ($typeOf == "player") 
+        {
             $sql = "INSERT INTO player (id,name,first_name,age,picture,description) VALUES ('$id_user',' ',' ',0,'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png','')";
-            try{
+            try
+            {
                 mysqli_query($db,$sql);
                 echo "player créé avec l'id $id_user";
                 $player = Player::getOne($id_user);
-                foreach (Category::getAll() as $category) {
+                foreach (Category::getAll() as $category) 
+                {
                     $feature= new Feature(null,$category->getId(),null,$player->getId(),1);
                     $feature->insert();
-                  }
-                  header("location: login.php");
-            }catch(Exception $e){
+                }
+                header("location: login.php");
+            }
+            catch(Exception $e)
+            {
                 echo "erreur création";
                 echo"<br/> sql = ".$sql;
             }
@@ -41,17 +48,21 @@ if (!empty($_POST["login"]) && !empty($_POST["password"]) && !empty($_POST["srol
         else
         {
             $sql = "INSERT INTO recruiter (id,name,first_name,licence) VALUES ('$id_user',' ',' ',null)";
-            try{
+            try
+            {
                 mysqli_query($db,$sql);
                 echo "recruteur créé avec l'id $id_user";
-            }catch(Exception $e){
+            }catch(Exception $e)
+            {
                 echo "erreur création";
                 echo"<br/> sql = ".$sql;
             }
-            
+
         }
         
-    }catch(Exception $e){
+    }
+    catch(Exception $e)
+    {
         echo "erreur création";
         echo"<br/> sql = ".$sql;
     }

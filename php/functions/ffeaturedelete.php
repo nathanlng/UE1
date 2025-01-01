@@ -2,8 +2,8 @@
 require_once("../autoload.php");
 require_once("../sessions.php");
 
-$objet = Feature::getOne($_GET["id"]);
+$object = Feature::getOne($_GET["id"]);
 
-$objet->delete();
+$object->delete();
 
 header("location: ../feature.php");

@@ -74,7 +74,6 @@
 }
 
 #bio {
-  margin-top: 10px;
   width: 40%;
 }
 
@@ -116,7 +115,6 @@
   /* max-width: 150px;
     max-height: 150px; */
   border-radius: 100%;
-  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
 
   background-size: cover;
   position: relative;
@@ -183,4 +181,37 @@
 .cellule {
   width: 48%;
   height: auto;
+}
+
+#messageInput {
+  position: fixed;
+  top: 95%;
+}
+
+#a {
+  width: 50vw;
+}
+
+#messageContainer {
+  display: flex;
+  height: auto;
+  width: 95vw;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.chat {
+  margin: 20px;
+  width: 95vw;
+  height: 100px;
+  background-color: #c4d9ba;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#filter{
+    background-color: aqua;
+    display: flex;
 }

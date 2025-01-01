@@ -24,7 +24,8 @@ class Form
         echo "<input type='submit' value='envoyer'/></form>";
     }
 
-    public static function formType($ligne){
+    public static function formType($ligne)
+    {
             if ($ligne->getTypeOf()=="text") 
             {
                 ?>
@@ -47,7 +48,7 @@ class Form
                 <select name="<?php echo $ligne->getName(); ?>">
                     <?php
                     foreach ($ligne->getChoices($ligne->getId()) as $choice)
-                     {
+                    {
                         echo "<option value='".$choice->getValue()."'>".$choice->getName()."</option>";
                     }
                 echo "</select><br/>";

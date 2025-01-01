@@ -2,11 +2,13 @@
 
 class Category
 {
+
     private $id;
     private $name;
     private $typeOf;
     private $choices =[];
 
+    
     public function __construct($id,$name,$typeOf) 
     {
         $this->setId($id);
@@ -41,15 +43,18 @@ class Category
         $tabObjets = [];
         foreach($tableau as $ligne)
         {
-            $tabObjets[] = new Category(
+            $tabObjets[] = new Category
+            (
                 $ligne["id"],
                 $ligne["name"],
-                $ligne["type_of"],);
+                $ligne["type_of"]
+            );
         }
         return $tabObjets;
     }
 
-    public function insert(){
+    public function insert()
+    {
 
         $requete = DB::getConnection()->prepare("INSERT INTO category (name,type_of) VALUES (?,?)");
         $requete->execute([$this->getName(),$this->getTypeOf()]);
@@ -61,7 +66,8 @@ class Category
         $requete = DB::getConnection()->prepare("select * from category where id = ?");
         $requete->execute([$id]); 
         $tableau = $requete->fetchAll(PDO::FETCH_ASSOC);
-        $objet = new Category(
+        $objet = new Category
+        (
             $tableau[0]["id"],
             $tableau[0]["name"],
             $tableau[0]["type_of"]
@@ -69,17 +75,20 @@ class Category
         return $objet;
     }
 
-    public function getChoices($id){
+    public function getChoices($id)
+    {
         $requete = DB::getConnection()->prepare("select id from choice where id_category = ?");
         $requete->execute([$id]);
         $results = $requete->fetchAll(PDO::FETCH_ASSOC);
-        foreach($results as $ligne){
+        foreach($results as $ligne)
+        {
             $this->choices[]=Choice::getOne($ligne["id"]);
         }
         return $this->choices;
     }
 
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -107,6 +116,4 @@ class Category
     {
         $this->typeOf = $value;
     }
-
-
 }
