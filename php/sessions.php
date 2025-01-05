@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// verifie si le compte est connecte
 function is_logged()
 {
     if(isset($_SESSION["login"]))
@@ -13,6 +14,7 @@ function is_logged()
     }
 }
 
+// verifie si le compte est admin
 function is_admin()
 {
     if(is_logged() && $_SESSION["srole"] == "admin")

@@ -204,3 +204,11 @@
 2024-12-28 16:54:52 antoine s'est connecté
 2024-12-28 17:38:25 antoine s'est deconnecté
 2024-12-28 17:38:29 admin s'est connecté
+2025-01-01 20:03:04 admin s'est deconnecté
+2025-01-01 20:03:10 antoine s'est connecté
+2025-01-01 20:03:25 antoine s'est deconnecté
+2025-01-01 20:03:30 recruiter s'est connecté
+2025-01-01 20:04:11 recruiter s'est deconnecté
+2025-01-01 20:04:17 admin s'est connecté
+2025-01-01 20:23:57 admin s'est deconnecté
+2025-01-01 20:24:03 antoine s'est connecté

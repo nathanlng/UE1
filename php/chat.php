@@ -14,12 +14,15 @@ else if ($_SESSION["srole"]=="player")
     $player = Player::getOne($_SESSION["sid"]);
 }
 
-if (Chat::getOne($recruiter->getId(),$player->getId()) != null) {
-   echo "<div id='messageContainer'> yes";
+if (Chat::getOne($recruiter->getId(),$player->getId()) != null) 
+{
+   echo "<div id='messageContainer'>";
    $chat= Chat::getOne($recruiter->getId(),$player->getId());
-   foreach ($chat->getMessages($chat->getId()) as $message) {
+   foreach ($chat->getMessages($chat->getId()) as $message) 
+   {
         echo "<div>";
-        if ($message->getSender() == $player->getId()) {
+        if ($message->getSender() == $player->getId()) 
+        {
             echo $player->getName();
         }
         else
@@ -42,7 +45,6 @@ if (Chat::getOne($recruiter->getId(),$player->getId()) != null) {
 }
 else
 {
-    echo "no";
     $chat = new Chat(null,$_GET["id"],$_SESSION["sid"],0);
     $chat->insert();
     header("location: chat.php?id=".$_GET["id"]."");

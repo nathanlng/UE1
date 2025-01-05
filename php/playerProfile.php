@@ -7,6 +7,7 @@
         $player=Player::getOne($_GET["id"]);
     ?>
 
+<!-- affiche le profil du joueur -->
 <div id="profileContainer" class="tableau">
           <div id="banniere">
           <img id="photoContainer" src="<?php echo $player->getPicture() ?>" alt="">
@@ -17,7 +18,8 @@
                 <div class="cellule">age:</div>
                 <div id="age" class="cellule"><?php echo $player->getAge()?></div>
               <?php
-              
+            
+            // affiche toute les features du player qui ont été selectionnées
             foreach ($player->getFeatures() as $feature) 
             {
                 if ($feature->getDisplay()==1) 

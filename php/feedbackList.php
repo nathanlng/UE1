@@ -40,12 +40,9 @@ if (!empty($_POST["fbIdUser"]))
 {
     $result = User::getOne($_POST["fbIdUser"])->getFeedback($_POST["fbIdUser"]);
     ?>
-    <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">user feedback list  </th>
-    </tr>
-  </thead>
+  <label>feedback List</label>
+  <table class="table table-hover">
+
   <tbody>
   <?php foreach($result as $ligne){?>
     <tr>
