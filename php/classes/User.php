@@ -47,14 +47,17 @@ class User
         $requete = DB::getConnection()->prepare("select * from user where id = ?");
         $requete->execute([$id]); // execution de la requete avec le paramètre à la place de ? dans le texte de la requête
         $tableau = $requete->fetchAll(PDO::FETCH_ASSOC); // je mets le résultat dans une variable tableau
-        $objet = new User
-        (
-            $tableau[0]["id"],
-            $tableau[0]["login"],
-            $tableau[0]["password"],
-            $tableau[0]["type_of"]
-        );
-        return $objet;
+        if (!empty($tableau[0]["id"])) {
+            $objet = new User
+            (
+                $tableau[0]["id"],
+                $tableau[0]["login"],
+                $tableau[0]["password"],
+                $tableau[0]["type_of"]
+            );
+            return $objet;
+        }
+        return "error";
     }
 
     public function getFeedback($id)

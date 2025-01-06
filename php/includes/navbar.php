@@ -12,7 +12,7 @@ require_once("sessions.php");
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/php/acceuil.html">Home</a>
+          <a class="nav-link" aria-current="page" href="/php/home.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/php/link.php">Link</a>
@@ -20,9 +20,16 @@ require_once("sessions.php");
         <li class="nav-item">
           <a class="nav-link" href="/php/contact.php">Contact</a>
         </li>
-        <li class="nav-item">
+        <?php
+        if (!is_admin() && is_logged()) {
+          ?>
+          <li class="nav-item">
           <a class="nav-link" href="/php/chatRoom.php">Chat</a>
         </li>
+          <?php
+        }
+        
+        ?>
         <li class="nav-item">
           <a class="nav-link" href="/php/profile.php">Profile</a>
         </li>

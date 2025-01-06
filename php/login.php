@@ -4,6 +4,7 @@
 require_once("fonctions.php");
 require_once("db.php");
 include_once("sessions.php");
+include("classes/DB.php");
 
 // condition pour deconnecter
 if (isset($_GET["deco"]) && isset($_SESSION["login"])) 
@@ -20,7 +21,6 @@ if (isset($_GET["deco"]) && isset($_SESSION["login"]))
 // verifier info connexion 
 if (is_logged()) 
 {
-
 message_login();
 echo "<a href='login.php?deco=1'>Déconnexion</a>";
 // var_dump(User::getOne($_SESSION["sid"]));
@@ -32,13 +32,12 @@ else if(!empty($_POST["login"]) && !empty($_POST["password"]))
         $result = mysqli_query($db,$sql);
         if($data = mysqli_fetch_row($result))
         {
-
             $hash = $data[2];
+            // verifie que le mdp envoyé correspond
             if (password_verify($_POST["password"],$hash)) 
             {
                 $valeur = $_POST["login"]."|".password_hash($_POST["password"],PASSWORD_DEFAULT);
-                        setcookie("login",$valeur,time()+3600*24);
-                echo "c'est good";
+                setcookie("login",$valeur,time()+3600*24);
                 $_SESSION["login"]=$_POST["login"];
                 $_SESSION["sid"]=$data[0];
                 $_SESSION["srole"]=$data[3];

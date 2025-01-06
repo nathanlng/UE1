@@ -26,7 +26,8 @@ if (!empty($_POST["login"]) && !empty($_POST["password"]) && !empty($_POST["srol
         echo "compte créé avec l'id $id_user";
         if ($typeOf == "player") 
         {
-            $sql = "INSERT INTO player (id,name,first_name,age,picture,description) VALUES ('$id_user',' ',' ',0,'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png','')";
+            // insere le joueur dans la base de données 
+            $sql = "INSERT INTO player (id,name,first_name,age,picture,description,display) VALUES ('$id_user',' ',' ',0,'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png','',1)";
             try
             {
                 mysqli_query($db,$sql);
@@ -47,6 +48,7 @@ if (!empty($_POST["login"]) && !empty($_POST["password"]) && !empty($_POST["srol
         }
         else
         {
+            // insere le recruteur dans la base de données 
             $sql = "INSERT INTO recruiter (id,name,first_name,licence) VALUES ('$id_user',' ',' ',null)";
             try
             {

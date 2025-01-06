@@ -5,46 +5,11 @@
     ?>
 
 <div class="container">
+
 <?php
-echo "<div id='filter'><form method='POST' action='filter.php'>";
-foreach (Category::getAll() as $category) 
-{
-    if ($category->getTypeOf()=="select") 
-    {
-        echo $category->getName();
-        ?>
-
-        <select name="<?php echo $category->getName()?>" >
-            <?php
-            foreach ($category->getChoices($category->getId()) as $choice)
-            {
-                echo "<option value='".$choice->getValue()."'";
-                echo ">".$choice->getName()."</option>";
-            }
-            ?>
-        </select>
-        <?php
-        
-    } 
-    else if ($category->getTypeOf()=="number")
-    {
-        echo $category->getName();
-        ?>
-        <label>min</label>
-        <input type="number" name="min<?php echo $category->getName()?>">
-        <label>max</label>
-        <input type="number" name="max<?php echo $category->getName()?>">
-        <?php
-    }
-}
-?>
-<input type="submit" value="filtrer">
-<?php
-echo "</form></div>";
-
-
 foreach (Player::getAll() as $player) 
 {
+    // affiche tous les joueurs avec le display = 1 et le nom et prenom valide
     if ($player->getName() != " " and $player->getFirstName() != " " and $player->getFirstName() != "" and $player->getName() != "" and $player->getDisplay()==1) 
     {
         ?>

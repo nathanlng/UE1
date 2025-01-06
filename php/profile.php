@@ -32,6 +32,7 @@ echo "<a href='login.php?deco=1'>Déconnexion</a>";
                 
                 foreach ($player->getFeatures() as $feature) 
                 {
+                // affiche uniquement les caracteristiques selectionnés par le joueur
                     if ($feature->getDisplay()==1) 
                     {
                         $category = Category::getOne($feature->getIdCategory());

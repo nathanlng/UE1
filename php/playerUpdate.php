@@ -7,6 +7,7 @@ $player= Player::getOne($_SESSION["sid"]);
 
 ?>
 
+<!-- formulaire de modification des infos du joueur  -->
 <form action="functions/fplayerupdate.php" method="post">
     <label>prenom</label>
     <input type="text" name="firstName" value="<?php echo $player->getFirstName()?>"><br />

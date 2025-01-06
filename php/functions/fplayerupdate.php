@@ -2,7 +2,8 @@
 require_once("../autoload.php");
 require_once("../sessions.php");
 
-if (!empty($_POST["firstName"]) && !empty($_POST["name"]) && !empty($_POST["age"]) && !empty($_POST["picture"]) && !empty($_POST["description"])) {
+if (!empty($_POST["firstName"]) && !empty($_POST["name"]) && !empty($_POST["age"]) && !empty($_POST["picture"]) && !empty($_POST["description"])) 
+{
     $player = Player::getOne($_SESSION["sid"]);
     $player->setFirstName($_POST["firstName"]);
     $player->setName($_POST["name"]);

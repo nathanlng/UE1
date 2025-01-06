@@ -78,6 +78,7 @@ function get_cookies()
     }
 }
 
+
 function create_select($element)
 {
     $sql = "SELECT * FROM categorie where type LIKE '%select%'";

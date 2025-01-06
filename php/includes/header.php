@@ -13,6 +13,8 @@
     <header></header>
 
     <?php
-    include ("navbar.php")
+    include ("navbar.php");
+    require_once "autoload.php";
+include_once("sessions.php");
     ?>
 
